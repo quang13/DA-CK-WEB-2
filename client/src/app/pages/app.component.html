@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="form-group">
+        <input placeholder="Nhập điểm đi" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #pickupInput [formControl]="destinationInput" [(ngModel)]="address">
+        <br/>
+        <input placeholder="Nhập điểm đến" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #pickupOutput [formControl]="destinationOutput">
+    </div>
+    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" [styles]="mapCustomStyles">
+        <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)"></agm-marker>
+        <sebm-google-map-directions [origin]="origin" [destination]="destination"></sebm-google-map-directions>
+    </agm-map>
+</div>
