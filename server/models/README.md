@@ -1,0 +1,1 @@
+# **Đây là tầng định nghĩa các class là các đối tượng của project đang hướng đến, ứng với DTO, tầng trung gian của BUS (services) và GUI trong mô hình 3 lớp**

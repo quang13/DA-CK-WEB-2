@@ -1,0 +1,1 @@
+# **Đây là tầng định nghĩa các thao tác truy vấn dữ liệu ứng với DAO trong mô hình MVC**
