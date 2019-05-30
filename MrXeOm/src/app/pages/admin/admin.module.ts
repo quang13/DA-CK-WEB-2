@@ -9,7 +9,7 @@ import * as Material from "@angular/material";
 import * as _Admin from "./admin-index";
 import { from } from 'rxjs';
 import { CdkTreeModule } from '@angular/cdk/tree';
-import { SelectCustomModule } from '../../_components/select-custom/select-custom.module';
+// import { SelectCustomModule } from '../../_components/select-custom/select-custom.module';
 import { MAT_DATE_LOCALE, MAT_DATE_FORMATS, DateAdapter } from '@angular/material';
 import { AppDateAdapter, APP_DATE_FORMATS } from '../../_services/date.adapter.service'
 @NgModule({
@@ -40,7 +40,7 @@ import { AppDateAdapter, APP_DATE_FORMATS } from '../../_services/date.adapter.s
         Material.MatMenuModule,
         Material.MatTooltipModule,
         CdkTreeModule,
-        SelectCustomModule
+        // SelectCustomModule
     ], declarations: [
         _Admin.AdminComponent,
     ],
