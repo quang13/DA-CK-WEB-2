@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { LayoutModule } from '../../layouts/layout.module';
+// import { LayoutModule } from '../../layouts/layout.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { _PaginatorIntl } from '../../_services/paginator.service'
 import { DialogService } from '../../_services/dialog.service'
@@ -17,7 +17,7 @@ import { AppDateAdapter, APP_DATE_FORMATS } from '../../_services/date.adapter.s
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        LayoutModule,
+        // LayoutModule,
         AdminRoutingModule,
         Material.MatToolbarModule,
         Material.MatGridListModule,
@@ -43,24 +43,8 @@ import { AppDateAdapter, APP_DATE_FORMATS } from '../../_services/date.adapter.s
         SelectCustomModule
     ], declarations: [
         _Admin.AdminComponent,
-        _Admin.AppRoleComponent,
-        _Admin.AppRoleCreateComponent,
-        _Admin.AppFunctionComponent,
-        _Admin.AppFunctionCreateComponent,
-        _Admin.AppPageComponent,
-        _Admin.AppPageCreateComponent,
-        _Admin.AppSetRoleComponent,
-        _Admin.ThongSoHeThongComponent,
-        _Admin.ThongSoHeThongCreateComponent,
-        _Admin.AppUserComponent,
-        _Admin.AppUserCreateComponent,
     ],
     entryComponents: [
-        _Admin.AppRoleCreateComponent,
-        _Admin.AppFunctionCreateComponent,
-        _Admin.AppPageCreateComponent,
-        _Admin.ThongSoHeThongCreateComponent,
-        _Admin.AppUserCreateComponent,
     ],
     providers: [
         DialogService,

@@ -8,7 +8,7 @@ import { SelectMultipleCustomComponent } from './select-multiple-custom.componen
 import { SelectServerSideComponent } from './select-server-side.component';
 import { AutocompleteServerSideComponent } from './autocomplete-server-side.component';
 import { AutocompleteComponent } from './autocomplete.component';
-//import {MatSelectInfiniteScrollModule} from 'ng-mat-select-infinite-scroll';
+import {MatSelectInfiniteScrollModule} from 'ng-mat-select-infinite-scroll';
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 @NgModule({
   imports: [

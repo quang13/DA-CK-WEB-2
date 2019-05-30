@@ -5,7 +5,7 @@ import { ReplaySubject, Subject } from 'rxjs';
 import { takeUntil, take } from 'rxjs/operators';
 import { MatSelect, MatOption } from '@angular/material';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
-import { ValidatorConstants } from '../../_common/ValidatorConstants';
+// import { ValidatorConstants } from '../../_common/ValidatorConstants';
 
 @Component({
   selector: 'select-multiple-custom',
