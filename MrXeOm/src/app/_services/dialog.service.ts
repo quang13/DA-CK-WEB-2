@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ConfirmDeleteComponent } from '../../../../../../../../Thực tập/SourcePhongKham/phongkham_giachuon/05 WebClient/Client/src/app/_components/confirm-delete/confirm-delete.component';
-import { ConfirmContinueComponent } from '../../../../../../../../Thực tập/SourcePhongKham/phongkham_giachuon/05 WebClient/Client/src/app/_components/confirm-continue/confirm-continue.component';
+import { ConfirmDeleteComponent } from '../_components/confirm-delete/confirm-delete.component';
+import { ConfirmContinueComponent } from '../_components/confirm-continue/confirm-continue.component';
 declare var $: any;
 
 @Injectable()

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
-import { UrlConstants } from '../../../../../../../../Thực tập/SourcePhongKham/phongkham_giachuon/05 WebClient/Client/src/app/_common/UrlConstants';
-import { SystemConstants } from '../../../../../../../../Thực tập/SourcePhongKham/phongkham_giachuon/05 WebClient/Client/src/app/_common/SystemConstants';
+import { UrlConstants } from '../_common/UrlConstants';
+import { SystemConstants } from '../_common/SystemConstants';
 import { isNullOrUndefined } from 'util';
 import * as moment from 'moment';
 import { Observable } from 'rxjs/Observable';
