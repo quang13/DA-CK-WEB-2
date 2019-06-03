@@ -1,0 +1,30 @@
+nav ul li {
+    list-style: none;
+    position: relative;
+    z-index: 1;
+}
+
+nav ul ul {
+    position: absolute;
+    left: 0;
+    top: 80px;
+    width: 150px;
+    opacity: 0;
+    display: none;
+    transition: all 1s;
+    padding-left: 0;
+}
+
+nav ul ul li {
+    float: none;
+    color: black;
+    text-align: left;
+}
+
+nav ul li:hover>ul {
+    left: 15px;
+    top: 30px;
+    opacity: 1;
+    display: inline-block;
+    background-color: #563d7c;
+}
