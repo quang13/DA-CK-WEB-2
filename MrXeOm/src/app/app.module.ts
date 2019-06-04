@@ -14,14 +14,15 @@ import { PagesComponent } from './pages/pages.component';
 import { PagesRoutingModule } from './pages/pages-routing.module';
 import { RegisterKHComponent } from './pages/dang-ky-member/dang-ky-member.component';
 import { HomeComponent } from './pages/home/home.component';
-
+import {LoginComponent}  from './pages/login/login.component';
 @NgModule({
   declarations: [
     PagesComponent,
     AppComponent,
     DirectionsMapDirective,
     RegisterKHComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
