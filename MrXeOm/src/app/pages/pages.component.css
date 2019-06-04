@@ -1,3 +1,8 @@
 .register {
     margin-top: 50px;
 }
+
+.register h2 {
+    text-align: center;
+    color: #D76D77;
+}

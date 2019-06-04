@@ -1,0 +1,20 @@
+<button class="btn btn-outline-success custom" (click)="onClick()" type="button">
+    <mat-icon>Chọn hình của bạn</mat-icon>
+  </button>
+<br/>
+<ul>
+    <li *ngFor="let file of files" [@fadeInOut]="file.state">
+        <mat-progress-bar [value]="file.progress"></mat-progress-bar>
+        <span id="file-label">
+        {{file.data.name}}
+        &nbsp;&nbsp;
+        <a title="Retry" (click)="retryFile(file)" *ngIf="file.canRetry">
+            <fa name="redo"></fa>
+        </a>&nbsp;&nbsp;
+        <a title="Cancel" (click)="cancelFile(file)" *ngIf="file.canCancel">
+            <fa name="times-circle"></fa>
+        </a>
+      </span>
+    </li>
+</ul>
+<input type="file" id="fileUpload" name="fileUpload" multiple="multiple" accept="{{accept}}" style="display:none;" />

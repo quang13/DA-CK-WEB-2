@@ -1,0 +1,17 @@
+.container {
+    box-shadow: 5px 5px 8px 8px #888888;
+    margin-top: 40px;
+    font-family: 'Dancing Script', cursive;
+}
+
+.thongtintx {
+    min-height: 200px;
+    line-height: 35px;
+    font-size: 25px;
+    padding: 15px 15px !important;
+}
+
+.thongtintx .col-3 {
+    background-image: url('../../../assets/media/images/user.jpg') !important;
+    background-size: cover;
+}

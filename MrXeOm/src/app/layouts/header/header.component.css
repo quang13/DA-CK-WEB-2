@@ -17,13 +17,12 @@ nav ul ul {
 
 nav ul ul li {
     float: none;
-    color: black;
     text-align: left;
 }
 
 nav ul li:hover>ul {
     left: 15px;
-    top: 30px;
+    top: 40px;
     opacity: 1;
     display: inline-block;
     background-color: #563d7c;
