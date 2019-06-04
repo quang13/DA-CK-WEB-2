@@ -4,6 +4,10 @@ nav ul li {
     z-index: 1;
 }
 
+nav ul li:hover {
+    color: #78ffd6;
+}
+
 nav ul ul {
     position: absolute;
     left: 0;
@@ -26,4 +30,12 @@ nav ul li:hover>ul {
     opacity: 1;
     display: inline-block;
     background-color: #563d7c;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #78ffd6 !important;
 }

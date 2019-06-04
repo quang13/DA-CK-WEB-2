@@ -28,6 +28,8 @@ export class HomeComponent implements OnInit{
     public estimatedDistance: any;
     public address: string;
     public geoCoder;
+    public time: Date;
+    public distance: number;
 
     @ViewChild('search', { read: ElementRef, static: false})
     public searchElementRef: ElementRef;

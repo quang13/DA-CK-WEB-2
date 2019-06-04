@@ -3,13 +3,10 @@ import { PagesComponent } from './pages.component';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterKHComponent } from './dang-ky-member/dang-ky-member.component';
 import { HomeComponent } from './home/home.component';
-<<<<<<< HEAD
 import {LoginComponent}  from './login/login.component'
-=======
 import { RegisterTXComponent } from './dang-ky-taixe/dang-ky-taixe.component';
 import { TaiXeCompopent } from './tai-xe/tai-xe.component';
 
->>>>>>> de8afeb380066115a0b1d1e345705a7fd054b2fd
 const routes: Routes = [
     {
         "path": "",
@@ -41,12 +38,13 @@ const routes: Routes = [
         }
     },
     {
-<<<<<<< HEAD
         path: 'dang-nhap',
         component: LoginComponent,
         data: {
             title: 'Đăng nhập'
-=======
+        }
+    },
+    {
         path: 'dang-ky-tai-xe',
         component: RegisterTXComponent,
         data: {
@@ -58,7 +56,6 @@ const routes: Routes = [
         component: TaiXeCompopent,
         data: {
             title: 'Tài xế'
->>>>>>> de8afeb380066115a0b1d1e345705a7fd054b2fd
         }
     },
     {
