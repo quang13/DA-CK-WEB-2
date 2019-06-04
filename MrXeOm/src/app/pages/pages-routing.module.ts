@@ -3,6 +3,8 @@ import { PagesComponent } from './pages.component';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterKHComponent } from './dang-ky-member/dang-ky-member.component';
 import { HomeComponent } from './home/home.component';
+import { RegisterTXComponent } from './dang-ky-taixe/dang-ky-taixe.component';
+import { TaiXeCompopent } from './tai-xe/tai-xe.component';
 
 const routes: Routes = [
     {
@@ -32,6 +34,20 @@ const routes: Routes = [
         component: RegisterKHComponent,
         data: {
             title: 'Đăng ký khách hàng'
+        }
+    },
+    {
+        path: 'dang-ky-tai-xe',
+        component: RegisterTXComponent,
+        data: {
+            title: 'Đăng ký tài xế'
+        }
+    },
+    {
+        path: 'tai-xe',
+        component: TaiXeCompopent,
+        data: {
+            title: 'Tài xế'
         }
     },
     {

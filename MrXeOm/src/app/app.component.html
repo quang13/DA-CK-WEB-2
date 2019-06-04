@@ -9,32 +9,5 @@
     </li>
 </ul> -->
 
-<!-- <div class="container" style="margin-top: 10px;">
-    <div class="row thongtin">
-        <div class="form-group col-7">
-            <input #name matInput placeholder="Nhập điểm đi" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #pickupInput [formControl]="destinationInput" [(ngModel)]="address">
-            <br/>
-            <input placeholder="Nhập điểm đến" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #pickupOutput [formControl]="destinationOutput">
-        </div>
-        <div class="col-5">
-            <p>Số km: </p>
-            <p>Thời gian: </p>
-            <p>Tổng tiền: </p>
-        </div>
-    </div>
-    <div class="row datxe">
-        <div class="col-7 row">
-            <div class="col-3"> <button type="button" class="btn btn-primary" (click)="editname()">Xem thông tin</button>
-            </div>
-            <div class="col-3"><button type="button" class="btn btn-primary">Đặt xe</button></div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" [styles]="mapCustomStyles">
-        <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)"></agm-marker>
-        <sebm-google-map-directions [origin]="origin" [destination]="destination"></sebm-google-map-directions>
-    </agm-map>
-</div> -->
 
 <router-outlet></router-outlet>

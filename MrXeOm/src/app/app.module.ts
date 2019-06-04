@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,12 @@ import { PagesComponent } from './pages/pages.component';
 import { PagesRoutingModule } from './pages/pages-routing.module';
 import { RegisterKHComponent } from './pages/dang-ky-member/dang-ky-member.component';
 import { HomeComponent } from './pages/home/home.component';
+import { RegisterTXComponent } from './pages/dang-ky-taixe/dang-ky-taixe.component';
+import { TaiXeCompopent } from './pages/tai-xe/tai-xe.component';
+import { MatFileUploadModule } from 'angular-material-fileupload';
+import { HttpClientModule } from '@angular/common/http';
+import { MaterialFileUploadComponent } from './material-file-upload/material-file-upload.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -21,7 +27,10 @@ import { HomeComponent } from './pages/home/home.component';
     AppComponent,
     DirectionsMapDirective,
     RegisterKHComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterTXComponent,
+    TaiXeCompopent,
+    MaterialFileUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -30,16 +39,26 @@ import { HomeComponent } from './pages/home/home.component';
     FormsModule,
     ReactiveFormsModule,
     Material.MatButtonModule,
+    Material.MatCardModule,
+    Material.MatProgressBarModule,
     BrowserAnimationsModule,
     LayoutModule,
+    HttpClientModule,
     PagesRoutingModule,
+    ReactiveFormsModule,
+    MatFileUploadModule,
+    AngularFontAwesomeModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBhV7whWFFrWG1FToGcs48HfEDBBtjxg8k',
       libraries: ['places'],
     }),
     AgmDirectionModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+  ],
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+],
 })
 export class AppModule { }
