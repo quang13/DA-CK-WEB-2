@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,7 +14,17 @@ import { PagesComponent } from './pages/pages.component';
 import { PagesRoutingModule } from './pages/pages-routing.module';
 import { RegisterKHComponent } from './pages/dang-ky-member/dang-ky-member.component';
 import { HomeComponent } from './pages/home/home.component';
+<<<<<<< HEAD
 import {LoginComponent}  from './pages/login/login.component';
+=======
+import { RegisterTXComponent } from './pages/dang-ky-taixe/dang-ky-taixe.component';
+import { TaiXeCompopent } from './pages/tai-xe/tai-xe.component';
+import { MatFileUploadModule } from 'angular-material-fileupload';
+import { HttpClientModule } from '@angular/common/http';
+import { MaterialFileUploadComponent } from './material-file-upload/material-file-upload.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
+>>>>>>> de8afeb380066115a0b1d1e345705a7fd054b2fd
 @NgModule({
   declarations: [
     PagesComponent,
@@ -22,7 +32,13 @@ import {LoginComponent}  from './pages/login/login.component';
     DirectionsMapDirective,
     RegisterKHComponent,
     HomeComponent,
+<<<<<<< HEAD
     LoginComponent
+=======
+    RegisterTXComponent,
+    TaiXeCompopent,
+    MaterialFileUploadComponent
+>>>>>>> de8afeb380066115a0b1d1e345705a7fd054b2fd
   ],
   imports: [
     BrowserModule,
@@ -31,16 +47,26 @@ import {LoginComponent}  from './pages/login/login.component';
     FormsModule,
     ReactiveFormsModule,
     Material.MatButtonModule,
+    Material.MatCardModule,
+    Material.MatProgressBarModule,
     BrowserAnimationsModule,
     LayoutModule,
+    HttpClientModule,
     PagesRoutingModule,
+    ReactiveFormsModule,
+    MatFileUploadModule,
+    AngularFontAwesomeModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBhV7whWFFrWG1FToGcs48HfEDBBtjxg8k',
       libraries: ['places'],
     }),
     AgmDirectionModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+  ],
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+],
 })
 export class AppModule { }
