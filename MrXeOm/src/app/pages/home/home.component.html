@@ -5,10 +5,10 @@
             <br/>
             <input placeholder="Nhập điểm đến" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #pickupOutput [formControl]="destinationOutput">
         </div>
-        <div class="col-5">
-            <p>Số km: </p>
-            <p>Thời gian: </p>
-            <p>Tổng tiền: </p>
+        <div class="col-5 thongtin">
+            <p>Số km: {{this.vc?.estimatedDistance}}</p>
+            <p>Thời gian: {{this.vc?.estimatedTime}}</p>
+            <p>Tổng tiền: {{this.money}}</p>
         </div>
     </div>
     <div class="row datxe">

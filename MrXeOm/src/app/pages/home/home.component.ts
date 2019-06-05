@@ -28,8 +28,7 @@ export class HomeComponent implements OnInit{
     public estimatedDistance: any;
     public address: string;
     public geoCoder;
-    public time: Date;
-    public distance: number;
+    public money: any;
 
     @ViewChild('search', { read: ElementRef, static: false})
     public searchElementRef: ElementRef;
@@ -92,7 +91,6 @@ export class HomeComponent implements OnInit{
             this.setupPlaceChangedListener(autocompleteInput, 'ORG');
             this.setupPlaceChangedListener(autocompleteOutput, 'DES');
         });
-
         // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
@@ -132,6 +130,11 @@ export class HomeComponent implements OnInit{
         this.estimatedTime = this.vc.estimatedTime;
         this.estimatedDistance = this.vc.estimatedDistance;
     }
+
+    // getMoney(){
+    //     this.money = this.vc.estimatedDistance * 2000;
+    //     console.log("abc");
+    // }
 
     scrollToBottom(): void {
         jQuery('html, body').animate({ scrollTop: jQuery(document).height() }, 3000);
