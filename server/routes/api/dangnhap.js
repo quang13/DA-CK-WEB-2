@@ -8,5 +8,5 @@ TaiKhoanDB = require('../../models/taikhoan'); // Lưu session vào mongodb
 module.exports = (app) =>{
     app.post('api/dangnhap', (req, res, next) =>{
         
-    })
+    });
 }
