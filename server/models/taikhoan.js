@@ -6,7 +6,7 @@ var taikhoanSchema = new mongoose.Schema({
     MatKhau: {type: String, minlength: 8, maxlength: 64, required: true},
     TenHienThi: {type: String, maxlength: 128},
     DiaChi: {type: String, required: true},
-    SoDienThoai: {type: String, minlength: 10, maxlength: 11, default: SoDienThoai.trim(), required: true, unique: true},
+    SoDienThoai: {type: String, minlength: 10, maxlength: 11, required: true, unique: true},
     Email: {type: String, unique: true},
     BiXoa: {type: Boolean, default: false},
     MaLoaiTaiKhoan: {type: Number, default: 1}
@@ -14,7 +14,7 @@ var taikhoanSchema = new mongoose.Schema({
 taikhoanSchema.virtual('mk').set(function(MatKhau){
     this.MatKhau = MatKhau;
 })
-taikhoan.pre('save', function(next){
+taikhoanSchema.pre('save', function(next){
     var tk = this;
 
     //Chỉ băm mật khẩu khi nó được được sửa hay tạo mới
@@ -36,11 +36,11 @@ taikhoan.pre('save', function(next){
 });
 
 //so sánh mật khẩu
-taikhoan.methods.compareMatKhau = function(candidateMatKhau, cb){
+taikhoanSchema.methods.compareMatKhau = function(candidateMatKhau, cb){
     bcrypt.compare(candidateMatKhau, this.MatKhau, function(err, isMatch){
         if(err) return cb(err);
         cb(null, isMatch);
     });
 };
 
-module.exports = mongoose.model('TaiKhoanDB', taikhoan);
+module.exports = mongoose.model('TaiKhoanDB', taikhoanSchema);
