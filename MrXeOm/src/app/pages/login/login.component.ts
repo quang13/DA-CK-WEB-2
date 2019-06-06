@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../_services/login.service';
-import { TaiKhoan } from '../../../../server/models/TaiKhoan.js';
+import { TaiKhoan } from '../../../../../server/models/TaiKhoan.js';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
