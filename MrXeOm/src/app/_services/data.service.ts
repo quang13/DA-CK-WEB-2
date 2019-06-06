@@ -165,83 +165,83 @@ export class DataService {
     //#endregion mattable custom
 
     //#region reques data
-    createrheader() {
-        this.userlogin = this._Login.getLoggedInUser();
-        return {
-            'Content-Type': 'application/json',
-            'Authorization': (isNull(this.userlogin) ? '' : ("Bearer " + this.userlogin.access_token))
-        };
-    }
-    get(uri: string) {
-        let header = this.createrheader();
-        return this._http.get(UrlConstants.BASE_API + uri, { headers: header });
-    }
-    post(uri: string, data?: any) {
-        let header = this.createrheader();
-        return this._http.post(UrlConstants.BASE_API + uri, data, { headers: header });
-    }
-    public handleError(error: any, el?: string) {
-        if (error.status == 404) {
-            this._Toastr.error(MessageConstants.API404);
-            return;
-        }
-        if (error.status === 401) {
-            clearTimeout(this.login_mess);
-            this.login_mess = setTimeout(() => {
-                this._Toastr.error(MessageConstants.LOGIN_AGAIN_MSG);
-            }, 400);
-            this._Login.logout();
-            this._router.navigate([UrlConstants.LOGIN]);
-            return;
-        }
-        if (error.status === 400) {
-            let errMsg = '';
-            try {
-                const dummy = error.error || error.Message;
-                if (Array.isArray(dummy)) {
-                    errMsg = dummy.join('</br>');
-                } else {
-                    errMsg = dummy;
-                }
-            } catch (Error) { }
-            try {
-                if (!errMsg || 0 === errMsg.length) { errMsg = error._body; }
-                if (errMsg.startsWith('"') && errMsg.endsWith('"')) {
-                    errMsg = errMsg.slice(1, -1);
-                }
-            } catch (Error) { }
-            if (errMsg !== '') {
-                this._Toastr.error(errMsg);
-            } else {
-                this._Toastr.error(MessageConstants.MS400);
-            }
-        } else if (error.status === 406) {
-            if (el != null) { $(el).remove(); }
-            return;
-        } else if (error.status === 403) {
-            this._router.navigate([UrlConstants.ACCESSDENIED]);
-        } else if (error.status === 405) {
-            this._Toastr.error(MessageConstants.KHONGDUOCPHEP);
-        } else if (error.status === 409) {
-            this._Toastr.error(MessageConstants.CONFLICT_MSG);
-        } else if (error.status === 0 || error.status === 500) {
-            try {
-                // có thông báo từ server trả về
-                const str = error.error || error.Message;
-                const from = str.indexOf('"ExceptionMessage":"') + 20;
-                const to = str.indexOf('","ExceptionType":');
-                const ms = str.substring(from, to);
-                this._Toastr.error(ms);
-            } catch (Error) {
-                this._Toastr.error(MessageConstants.SERVE_ERROR_MSG);
-            }
-        } else {
-            const errMsg = JSON.parse(error._body || '{}').error || '';
-            if (errMsg.length > 0) {
-                this._Toastr.error(errMsg);
-                return Observable.throw(errMsg);
-            }
-        }
-    }
+    // createrheader() {
+    //     this.userlogin = this._Login.login(username: string, password: string);
+    //     return {
+    //         'Content-Type': 'application/json',
+    //         'Authorization': (isNull(this.userlogin) ? '' : ("Bearer " + this.userlogin.access_token))
+    //     };
+    // }
+    // get(uri: string) {
+    //     let header = this.createrheader();
+    //     return this._http.get(UrlConstants.BASE_API + uri, { headers: header });
+    // }
+    // post(uri: string, data?: any) {
+    //     let header = this.createrheader();
+    //     return this._http.post(UrlConstants.BASE_API + uri, data, { headers: header });
+    // }
+    // public handleError(error: any, el?: string) {
+    //     if (error.status == 404) {
+    //         this._Toastr.error(MessageConstants.API404);
+    //         return;
+    //     }
+    //     if (error.status === 401) {
+    //         clearTimeout(this.login_mess);
+    //         this.login_mess = setTimeout(() => {
+    //             this._Toastr.error(MessageConstants.LOGIN_AGAIN_MSG);
+    //         }, 400);
+    //         this._Login.logout();
+    //         this._router.navigate([UrlConstants.LOGIN]);
+    //         return;
+    //     }
+    //     if (error.status === 400) {
+    //         let errMsg = '';
+    //         try {
+    //             const dummy = error.error || error.Message;
+    //             if (Array.isArray(dummy)) {
+    //                 errMsg = dummy.join('</br>');
+    //             } else {
+    //                 errMsg = dummy;
+    //             }
+    //         } catch (Error) { }
+    //         try {
+    //             if (!errMsg || 0 === errMsg.length) { errMsg = error._body; }
+    //             if (errMsg.startsWith('"') && errMsg.endsWith('"')) {
+    //                 errMsg = errMsg.slice(1, -1);
+    //             }
+    //         } catch (Error) { }
+    //         if (errMsg !== '') {
+    //             this._Toastr.error(errMsg);
+    //         } else {
+    //             this._Toastr.error(MessageConstants.MS400);
+    //         }
+    //     } else if (error.status === 406) {
+    //         if (el != null) { $(el).remove(); }
+    //         return;
+    //     } else if (error.status === 403) {
+    //         this._router.navigate([UrlConstants.ACCESSDENIED]);
+    //     } else if (error.status === 405) {
+    //         this._Toastr.error(MessageConstants.KHONGDUOCPHEP);
+    //     } else if (error.status === 409) {
+    //         this._Toastr.error(MessageConstants.CONFLICT_MSG);
+    //     } else if (error.status === 0 || error.status === 500) {
+    //         try {
+    //             // có thông báo từ server trả về
+    //             const str = error.error || error.Message;
+    //             const from = str.indexOf('"ExceptionMessage":"') + 20;
+    //             const to = str.indexOf('","ExceptionType":');
+    //             const ms = str.substring(from, to);
+    //             this._Toastr.error(ms);
+    //         } catch (Error) {
+    //             this._Toastr.error(MessageConstants.SERVE_ERROR_MSG);
+    //         }
+    //     } else {
+    //         const errMsg = JSON.parse(error._body || '{}').error || '';
+    //         if (errMsg.length > 0) {
+    //             this._Toastr.error(errMsg);
+    //             return Observable.throw(errMsg);
+    //         }
+    //     }
+    // }
     //#endregion reques data
 }

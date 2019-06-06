@@ -14,11 +14,11 @@ var TaiKhoanSchema = new mongoose.Schema({
     },
     MatKhau: {
         type: String,
-        required: true 
+        required: true
     },
     TenHienThi: {
         type: String,
-        required: true       
+        required: true
     },
     Email: {
         type: String,
@@ -44,4 +44,4 @@ var TaiKhoanSchema = new mongoose.Schema({
     }
 });
 
-module.exports =  mongoose.model('TaiKhoan', TaiKhoanSchema);
+module.exports = mongoose.model('TaiKhoan', TaiKhoanSchema);
