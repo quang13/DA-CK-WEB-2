@@ -32,6 +32,7 @@
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
+    "mongoose": "^5.5.13",
     "ng-mat-select-infinite-scroll": "^1.0.1",
     "ngx-bootstrap": "^4.2.0",
     "ngx-mat-select-search": "^1.7.5",
@@ -43,6 +44,7 @@
     "socket.io": "^2.2.0",
     "toastr": "^2.1.4",
     "tslib": "^1.9.0",
+    "uniq": "^1.0.1",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

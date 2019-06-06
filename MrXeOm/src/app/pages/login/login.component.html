@@ -91,29 +91,23 @@
 </head>
 
 <body>
-
     <h2 class="dn">Đăng nhập</h2>
-
-    <form action="/action_page.php">
-        <!-- <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div> -->
+    <form method='POST' action=''>
 
         <div class="container">
             <label for="uname"><b>Tên đăng nhập</b></label>
-            <input type="text" placeholder="Tên đăng nhập" name="uname" required>
+            <input type="text" [([(ngModel)]="taikhoan.TenDangNhap" )] placeholder="Tên đăng nhập" name="TenDangNhap" required>
 
             <label for="psw"><b>Mật khẩu</b></label>
-            <input type="password" placeholder="Mật khẩu" name="psw" required>
+            <input type="password" [([(ngModel)]="taikhoan.MatKhau" )] placeholder="Mật khẩu" name="MatKhau" required>
 
-            <button type="submit">Đăng nhập</button>
+            <button type="submit" (click)="validateLogin();">Đăng nhập</button>
             <label>
       <input type="checkbox" checked="checked" name="remember"> Lưu thông tin
     </label>
         </div>
 
         <div class="container">
-            <!-- <button type="button" class="cancelbtn">Trở về trang chủ</button> -->
             <a [routerLink]="['/']" class="btn btn-link"><button type="button" class="cancelbtn">Trang chủ</button></a>
             <span class="psw">Quên <a href="#">mật khẩu?</a></span>
         </div>
@@ -121,7 +115,6 @@
     <footer>
         <div class="ft"></div>
     </footer>
-
 </body>
 
 </html>
