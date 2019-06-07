@@ -2,11 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const expressSession = require('express-session');
 const app = express();
 const PORT = 3000;
 
 app.use(cookieParser());
-app.use(bodyParser.json);
+app.use(expressSession());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 // API routes
 //require('./routes')(app);
