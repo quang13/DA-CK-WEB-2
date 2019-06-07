@@ -6,8 +6,8 @@ const session = require('express-session');
 //const passport = require('passport');
 const app = express();
 const port = process.env.PORT || 8080;
-var FileStore = require('session-file-store')(session);
-
+const FileStore = require('session-file-store')(session);
+let options;
 app.use(cookieParser()); // đọc cookie (cần cho xác thực)
 app.use(session({
     store: new FileStore(options),
