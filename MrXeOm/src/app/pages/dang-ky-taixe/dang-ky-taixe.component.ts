@@ -1,28 +1,76 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { NgForm } from '@angular/forms';
+import { DangKyService } from '../dang-ky/dangky.service';
+import { Dangky } from '../dang-ky/dangky.model';
+
+declare var M: any;
 
 @Component({
-  selector: 'app-registerTX',
-  templateUrl: 'dang-ky-taixe.component.html',
-  styleUrls: ['../pages.component.css']
+  selector: 'app-dangkytaixe',
+  templateUrl: './dang-ky-taixe.component.html',
+  providers: [DangKyService]
 })
 export class RegisterTXComponent implements OnInit {
-    private registerForm: FormGroup;
-    private loading = false;
-    private submitted = false;
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router
-  ) {}
+
+  constructor(private dangkyService: DangKyService) { }
+
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      phone: ['', Validators.required],
-      identityCard: ['', Validators.required],
-  });
+    this.resetForm();
+    this.refreshRegisterList();
   }
+
+  resetForm(form?: NgForm) {
+    if (form) {
+      form.reset();
+    }
+    this.dangkyService.selectedDangKy = {
+      _id: '',
+      MaTaiKhoan: null,
+      TenDangNhap: '',
+      MatKhau: '',
+      TenHienThi: '',
+      DiaChi: '',
+      SoDienThoai: '',
+      Email: '',
+      BiXoa: null,
+      MaLoaiTaiKhoan: null,
+    }
+  }
+
+  onSubmit(form: NgForm) {
+    if (form.value._id == '') {
+      this.dangkyService.postRegister(form.value).subscribe((res) => {
+        this.resetForm(form);
+        this.refreshRegisterList();
+        M.toast({ html: 'Đăng ký thành công', classes: 'rounded' });
+      });
+    } else {
+      this.dangkyService.putRegister(form.value).subscribe((res) => {
+        this.resetForm(form);
+        this.refreshRegisterList();
+        M.toast({ html: 'Cập nhật thành công', classes: 'rounded' });
+      });
+    }
+  }
+
+  refreshRegisterList() {
+    this.dangkyService.getRegisterList().subscribe((res) => {
+      this.dangkyService.dangky = res as Dangky[];
+    });
+  }
+
+  onEdit(emp: Dangky) {
+    this.dangkyService.selectedDangKy = emp;
+  }
+
+  onDelete(_id: string, form: NgForm) {
+    if (confirm('Are you sure to delete this record ?') == true) {
+      this.dangkyService.deleteRegister(_id).subscribe((res) => {
+        this.refreshRegisterList();
+        this.resetForm(form);
+        M.toast({ html: 'Xoá thành công', classes: 'rounded' });
+      });
+    }
+  }
+
 }
