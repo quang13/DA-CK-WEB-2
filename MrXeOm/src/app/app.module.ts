@@ -14,7 +14,7 @@ import { PagesComponent } from './pages/pages.component';
 import { PagesRoutingModule } from './pages/pages-routing.module';
 import { RegisterKHComponent } from './pages/dang-ky-member/dang-ky-member.component';
 import { HomeComponent } from './pages/home/home.component';
-import {LoginComponent} from './pages/login/login.component';
+import { LoginComponent } from './pages/login/login.component';
 import { RegisterTXComponent } from './pages/dang-ky-taixe/dang-ky-taixe.component';
 import { TaiXeCompopent } from './pages/tai-xe/tai-xe.component';
 import { MatFileUploadModule } from 'angular-material-fileupload';
