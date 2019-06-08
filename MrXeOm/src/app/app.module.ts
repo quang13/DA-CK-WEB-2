@@ -14,9 +14,6 @@ import { PagesComponent } from './pages/pages.component';
 import { PagesRoutingModule } from './pages/pages-routing.module';
 import { RegisterKHComponent } from './pages/dang-ky-member/dang-ky-member.component';
 import { HomeComponent } from './pages/home/home.component';
-<<<<<<< HEAD
-import {LoginComponent}  from './pages/login/login.component';
-=======
 import { RegisterTXComponent } from './pages/dang-ky-taixe/dang-ky-taixe.component';
 import { TaiXeCompopent } from './pages/tai-xe/tai-xe.component';
 import { MatFileUploadModule } from 'angular-material-fileupload';
@@ -24,7 +21,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialFileUploadComponent } from './material-file-upload/material-file-upload.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
->>>>>>> de8afeb380066115a0b1d1e345705a7fd054b2fd
 @NgModule({
   declarations: [
     PagesComponent,
@@ -32,13 +28,9 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     DirectionsMapDirective,
     RegisterKHComponent,
     HomeComponent,
-<<<<<<< HEAD
-    LoginComponent
-=======
     RegisterTXComponent,
     TaiXeCompopent,
     MaterialFileUploadComponent
->>>>>>> de8afeb380066115a0b1d1e345705a7fd054b2fd
   ],
   imports: [
     BrowserModule,
