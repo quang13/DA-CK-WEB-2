@@ -3,7 +3,7 @@ const TaiKhoan = require('../../models/taikhoan');
 const ObjectID = require('mongoose').Types.ObjectId;
 
 //get all
-router.get('/admin', (req, res) =>{
+router.get('/taixe', (req, res) =>{
     TaiKhoan.find({MaLoaiTaiKhoan: 2}, (err, data) =>{
         if(!err) {
             res.send(data);
@@ -20,7 +20,7 @@ router.get('/taixe/:id', (req, res) =>{
     {
         return res.status(400).send(`Không tìm thấy dữ liệu với id: ${req.params.id}`);
     }
-    TaiKhoan.findById({_id: req.params.id, MaLoaiTaiKhoan: 0}, (err, data) =>{
+    TaiKhoan.findById({_id: req.params.id, MaLoaiTaiKhoan: 2}, (err, data) =>{
         if(!err)
         {
             return res.send(data);
@@ -46,7 +46,7 @@ router.put('/taixe/:id', (err, res) =>{
         Email: req.body.Email,
         BiXoa: false,
     });
-    TaiKhoan.findByIdAndUpdate({_id: req.params.id, MaLoaiTaiKhoan: 0}, {$set: tk}, {new: true}, (err, data) =>{
+    TaiKhoan.findByIdAndUpdate({_id: req.params.id, MaLoaiTaiKhoan: 2}, {$set: tk}, {new: true}, (err, data) =>{
         if(!err)
         {
             return res.send(data);
@@ -62,7 +62,7 @@ router.delete('/admin/:id', (req, res) =>{
     {
         return res.status(400).send(`Không tìm thấy dữ liệu với id: ${req.params.id}`);
     }
-    TaiKhoan.findByIdAndDelete({_id: req.params.id, MaLoaiTaiKhoan: 0}, (err, data) =>{
+    TaiKhoan.findByIdAndDelete({_id: req.params.id, MaLoaiTaiKhoan: 2}, (err, data) =>{
         if(!err)
         {
             return res.send(data);

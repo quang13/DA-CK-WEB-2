@@ -3,7 +3,7 @@ import { PagesComponent } from './pages.component';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterKHComponent } from './dang-ky-member/dang-ky-member.component';
 import { HomeComponent } from './home/home.component';
-import {LoginComponent}  from './login/login.component'
+import {LoginComponent}  from './login/login.component';
 import { RegisterTXComponent } from './dang-ky-taixe/dang-ky-taixe.component';
 import { TaiXeCompopent } from './tai-xe/tai-xe.component';
 
