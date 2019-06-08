@@ -4,11 +4,15 @@ nav ul li {
     z-index: 1;
 }
 
+nav ul li:hover {
+    color: #78ffd6;
+}
+
 nav ul ul {
     position: absolute;
     left: 0;
     top: 80px;
-    width: 150px;
+    width: 120px;
     opacity: 0;
     display: none;
     transition: all 1s;
@@ -22,8 +26,16 @@ nav ul ul li {
 
 nav ul li:hover>ul {
     left: 15px;
-    top: 40px;
+    top: 70px;
     opacity: 1;
     display: inline-block;
     background-color: #563d7c;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #78ffd6 !important;
 }

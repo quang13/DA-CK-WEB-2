@@ -1,5 +1,5 @@
 import { GoogleMapsAPIWrapper } from '@agm/core';
-import { Directive, Input, Output, Component, Inject } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 
 declare var google: any;
 @Directive({

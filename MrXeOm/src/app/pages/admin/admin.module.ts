@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-// import { LayoutModule } from '../../layouts/layout.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { _PaginatorIntl } from '../../_services/paginator.service'
 import { DialogService } from '../../_services/dialog.service'
@@ -9,15 +8,18 @@ import * as Material from "@angular/material";
 import * as _Admin from "./admin-index";
 import { from } from 'rxjs';
 import { CdkTreeModule } from '@angular/cdk/tree';
-// import { SelectCustomModule } from '../../_components/select-custom/select-custom.module';
 import { MAT_DATE_LOCALE, MAT_DATE_FORMATS, DateAdapter } from '@angular/material';
-import { AppDateAdapter, APP_DATE_FORMATS } from '../../_services/date.adapter.service'
+import { AppDateAdapter, APP_DATE_FORMATS } from '../../_services/date.adapter.service';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { DanhSachAdminCreateComponent } from './danh-sach-admin/danh-sach-admin-create/danh-sach-admin-create.component';
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
+        BrowserModule,
+        HttpClientModule,
         ReactiveFormsModule,
-        // LayoutModule,
         AdminRoutingModule,
         Material.MatToolbarModule,
         Material.MatGridListModule,
@@ -43,6 +45,7 @@ import { AppDateAdapter, APP_DATE_FORMATS } from '../../_services/date.adapter.s
         // SelectCustomModule
     ], declarations: [
         _Admin.AdminComponent,
+        DanhSachAdminCreateComponent,
     ],
     entryComponents: [
     ],
