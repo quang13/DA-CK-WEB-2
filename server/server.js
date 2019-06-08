@@ -26,4 +26,4 @@ mongoose.connect('mongodb://localhost:27017/DatXeOm', {useNewUrlParser: true}, (
     console.log("Kết nối đến cơ sở dữ liệu thành công!");
 });
 
-app.listen(port, console.log('Server is running with port 3000!'));
+app.listen(port, console.log('Server is running with port: ' +port));

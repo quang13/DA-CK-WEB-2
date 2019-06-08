@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 var taikhoanSchema = new mongoose.Schema({
-    MaTaiKhoan: {type: Number, required: true, unique: true, },
+    _id: String, //ObjectID trong mongodb ứng với khoá chính
     TenDangNhap: {type: String, minlength: 4, maxlength: 32, required: true, unique: true},
     MatKhau: {type: String, minlength: 8, maxlength: 64, required: true},
     TenHienThi: {type: String, maxlength: 128},
@@ -9,7 +9,12 @@ var taikhoanSchema = new mongoose.Schema({
     SoDienThoai: {type: String, minlength: 10, maxlength: 11, required: true, unique: true},
     Email: {type: String, unique: true},
     BiXoa: {type: Boolean, default: false},
-    MaLoaiTaiKhoan: {type: Number, default: 1}
+    MaLoaiTaiKhoan: {type: Number, default: 1},
+    //custom cho tài xế: Những thông tin dưới đây là thêm cho tài xế
+    HinhXe: String,
+    Avatar: String,
+    CMND: String
+
 });
 taikhoanSchema.virtual('mk').set(function(MatKhau){
     this.MatKhau = MatKhau;
