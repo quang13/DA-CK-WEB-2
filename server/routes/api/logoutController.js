@@ -1,6 +1,8 @@
 const router = require('express').Router();
 
-router.get('/taikhoan/dangxuat', (req, res) =>{
+router.get('/', (req, res) =>{
     req.logOut();
     res.redirect('/');
 });
+
+module.exports = router;

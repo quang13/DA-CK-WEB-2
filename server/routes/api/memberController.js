@@ -4,7 +4,7 @@ const ObjectID = require('mongoose').Types.ObjectId;
 
 //get all
 router.get('/', (req, res) =>{
-    TaiKhoan.find({}, (err, data) =>{
+    TaiKhoan.find({MaLoaiTaiKhoan: 1}, (err, data) =>{
         if(!err) {
             res.send(data);
         }

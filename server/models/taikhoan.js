@@ -48,4 +48,4 @@ taikhoanSchema.methods.compareMatKhau = function(candidateMatKhau, cb){
     });
 };
 
-module.exports = mongoose.model('TaiKhoanDB', taikhoanSchema);
+module.exports = mongoose.model('taikhoan', taikhoanSchema);

@@ -1,11 +1,10 @@
 const router = require('express').Router();
-const LoaiTaiKhoanDB = require('../../models/loaitaikhoan');
-//getall loại tài khoản
+const TinhTrangDB = require('../../models/tinhtrang');
 router.get('/', (req, res) =>{
-    LoaiTaiKhoanDB.find({}, (err, data) =>{
+    TinhTrangDB.find({}, (err, data) =>{
         if(!err)
         {
-            res.send(data);
+            return res.send(data);
         }
         else {
             return res.send({
@@ -15,4 +14,3 @@ router.get('/', (req, res) =>{
         }
     });
 });
-module.exports = router;

@@ -5,6 +5,7 @@ import { MapsAPILoader, MouseEvent, GoogleMapsAPIWrapper } from '@agm/core';
 import { DirectionsMapDirective } from '../../map/google-map.directive';
 import { FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ok } from 'assert';
 
 // import {LatLng as LatitudeLongitude} from "@molteni/coordinate-utils/dist/LatLng";
 
@@ -50,10 +51,11 @@ export class HomeComponent implements OnInit{
     public origin: any; // its a example aleatory position
     public destination: any; // its a example aleatory position
 
-    constructor(
-        private mapsAPILoader: MapsAPILoader,
-        private ngZone: NgZone,
-            ) {
+    constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
+        // //set quãng đường và thời gian
+        // this.estimatedDistance = this.vc.estimatedDistance;
+        // this.estimatedTime = this.vc.estimatedTime;
+        // this.money = 2000 * (this.vc.estimatedDistance.value) / 1000;
     }
 
     ngOnInit() {
@@ -116,7 +118,6 @@ export class HomeComponent implements OnInit{
                         this.vc.directionsDisplay = new google.maps.DirectionsRenderer;
                     });
                 }
-
                 //Update the directions
                 this.vc.updateDirections();
                 this.zoom = 12;
@@ -125,17 +126,6 @@ export class HomeComponent implements OnInit{
         });
 
     }
-
-    getDistanceAndDuration() {
-        this.estimatedTime = this.vc.estimatedTime;
-        this.estimatedDistance = this.vc.estimatedDistance;
-    }
-
-    // getMoney(){
-    //     this.money = this.vc.estimatedDistance * 2000;
-    //     console.log("abc");
-    // }
-
     scrollToBottom(): void {
         jQuery('html, body').animate({ scrollTop: jQuery(document).height() }, 3000);
     }
@@ -190,4 +180,18 @@ export class HomeComponent implements OnInit{
     editname(): void{
       this.nameField.nativeElement.focus();
     }
+    // getThoiGianDi()
+    // {
+    //     return this.estimatedTime = this.vc.estimatedTime;
+    // }
+    // getQuangDuongDi()
+    // {
+    //     return this.estimatedDistance = this.vc.estimatedDistance;
+    // }
+    // getMoney()
+    // {
+    //     let quangduong = this.vc.estimatedDistance.value; // lấy ra số mét của quãng đường
+    //     this.money = 2000 * quangduong / 1000;
+    //     return this.money;
+    // }
 }

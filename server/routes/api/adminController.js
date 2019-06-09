@@ -2,8 +2,7 @@ const router = require('express').Router();
 const TaiKhoan = require('../../models/taikhoan');
 const ObjectID = require('mongoose').Types.ObjectId;
 
-//get all
-router.get('/admin', (req, res) =>{
+router.get('/', (req, res) =>{
     TaiKhoan.find({MaLoaiTaiKhoan: 0}, (err, data) =>{
         if(!err) {
             res.send(data);
@@ -14,8 +13,8 @@ router.get('/admin', (req, res) =>{
     });
 });
 
-//getbyid
-router.get('/admin/:id', (req, res) =>{
+//localhost:8080/taikhoan/admin/:id
+router.get('/:id', (req, res) =>{
     if(!ObjectID.isValid(req.params.id))
     {
         return res.status(400).send(`Không tìm thấy dữ liệu với id: ${req.params.id}`);
@@ -32,7 +31,7 @@ router.get('/admin/:id', (req, res) =>{
 });
 
 //update
-router.put('/admin/:id', (err, res) =>{
+router.put('/:id', (err, res) =>{
     if(!ObjectID.isValid(req.params.id))
     {
         return res.status(400).send(`Không tìm thấy dữ liệu với id: ${req.params.id}`);
@@ -57,7 +56,7 @@ router.put('/admin/:id', (err, res) =>{
     });
 });
 
-router.delete('/admin/:id', (req, res) =>{
+router.delete('/:id', (req, res) =>{
     if(!ObjectID.isValid(req.params.id))
     {
         return res.status(400).send(`Không tìm thấy dữ liệu với id: ${req.params.id}`);
