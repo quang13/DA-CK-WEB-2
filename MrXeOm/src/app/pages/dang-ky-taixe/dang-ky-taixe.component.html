@@ -5,6 +5,7 @@
                 <div class="row">
                     <div class="col s5">
                         <form [formGroup]="registerForm" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+                            <h1 style="text-align:center; color:#563d7c;">ĐĂNG KÝ</h1>
                             <input type="hidden" formControlName="_id" #_id [(ngModel)]="dangkyService.selectedDangKy._id">
                             <div class="row">
                                 <div class="input-field col s12">
@@ -44,8 +45,9 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <button class="btn btn-custom center" type="button" (click)="resetForm(employeeForm)">Reset</button>
-                                    <button class="btn btn-custom center" type="submit" [disabled]="!employeeForm.valid">Submit</button>
+                                    <button class="btn btn-custom left" type="button" (click)="resetForm(employeeForm)">Reset</button>
+                                    <button class="btn btn-custom left" type="submit" [disabled]="!employeeForm.valid">Submit</button>
+                                    <a [routerLink]="['/']" class="btn btn-link">Trang chủ</a>
                                 </div>
                             </div>
                         </form>
@@ -54,5 +56,4 @@
             </div>
         </div>
     </div>
-
 </div>
