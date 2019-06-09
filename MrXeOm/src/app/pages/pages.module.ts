@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterTXComponent } from './dang-ky-taixe/dang-ky-taixe.component';
 import { TaiXeCompopent } from './tai-xe/tai-xe.component';
-import { ReactiveFormsModule  } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatDatepickerModule, MatNativeDateModule, MatCardModule } from '@angular/material';
 import { MaterialFileUploadComponent } from '../material-file-upload/material-file-upload.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -40,7 +40,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
         CommonModule,
         RouterModule,
         ReactiveFormsModule,
-        AngularFontAwesomeModule
+        AngularFontAwesomeModule,
+        FormsModule
     ],
     providers: [],
     schemas: [

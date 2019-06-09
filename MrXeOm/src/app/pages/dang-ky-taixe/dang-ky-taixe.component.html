@@ -1,57 +1,55 @@
 <div class="container">
-    <div class="col s12">
-        <div class="card">
-            <div class="card-content white-text">
-                <div class="row">
-                    <div class="col s5">
-                        <form [formGroup]="registerForm" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
-                            <h1 style="text-align:center; color:#563d7c;">ĐĂNG KÝ</h1>
-                            <input type="hidden" formControlName="_id" #_id [(ngModel)]="dangkyService.selectedDangKy._id">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input type="text" formControlName="TenDangNhap" #name [(ngModel)]="employeeService.selectedEmployee.TenDangNhap" required>
-                                    <label>Tên đăng nhập <label class="red-text">*</label></label>
-                                </div>
+    <div class="row register" style="margin: 50px 0">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-content">
+                    <h2 style="text-align:center; color:#563d7c;">Đăng ký</h2>
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
+                        <input type="hidden" formControlName="_id" [(ngModel)]="dangkyService.selectedDangKy._id" />
+                        <div class="form-group input-field">
+                            <label>Tên hiển thị <label class="red-text">*</label></label>
+                            <input type="text" formControlName="TenHienThi" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.TenHienThi.errors }" [(ngModel)]="dangkyService.selectedDangKy.TenHienThi" />
+                            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                <div *ngIf="f.TenHienThi.errors.required">Bạn chưa nhập Họ tên!</div>
                             </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input type="text" formControlName="MatKhau" #name [(ngModel)]="employeeService.selectedEmployee.MatKhau" required>
-                                    <label>Mật khẩu <label class="red-text">*</label></label>
-                                </div>
+                        </div>
+                        <div class="form-group input-field">
+                            <label>Tên đăng nhập <label class="red-text">*</label></label>
+                            <input type="text" formControlName="TenDangNhap" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.TenDangNhap.errors }" [(ngModel)]="dangkyService.selectedDangKy.TenDangNhap" />
+                            <div *ngIf="submitted && f.TenDangNhap.errors" class="invalid-feedback">
+                                <div *ngIf="f.TenDangNhap.errors.required">Bạn chưa nhập Tên đăng nhâp!</div>
                             </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input type="text" formControlName="TenHienThi" #name [(ngModel)]="employeeService.selectedEmployee.TenHienThi" required>
-                                    <label>Tên hiển thị <label class="red-text">*</label></label>
-                                </div>
+                        </div>
+                        <div class="form-group input-field">
+                            <label>Mật khẩu <label class="red-text">*</label></label>
+                            <input type="password" formControlName="MatKhau" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.MatKhau.errors }" [(ngModel)]="dangkyService.selectedDangKy.MatKhau" />
+                            <div *ngIf="submitted && f.MatKhau.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.MatKhau.required">Bạn chưa nhập Mật khẩu!</div>
+                                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
                             </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input type="text" formControlName="DiaChi" #name [(ngModel)]="employeeService.selectedEmployee.DiaChi" required>
-                                    <label>Địa chỉ <label class="red-text">*</label></label>
-                                </div>
+                        </div>
+                        <div class="form-group input-field">
+                            <label>Số điện thoại <label class="red-text">*</label></label>
+                            <input type="text" formControlName="SoDienThoai" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.SoDienThoai.errors }" [(ngModel)]="dangkyService.selectedDangKy.SoDienThoai" />
+                            <div *ngIf="submitted && f.SoDienThoai.errors" class="invalid-feedback">
+                                <div *ngIf="f.SoDienThoai.errors.required">Bạn chưa nhập Số điện thoại!</div>
                             </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input type="text" formControlName="SoDienThoai" #name [(ngModel)]="employeeService.selectedEmployee.SoDienThoai" required>
-                                    <label>Số điện thoại <label class="red-text">*</label></label>
-                                </div>
+                        </div>
+                        <div class="form-group input-field">
+                            <label>Email <label class="red-text">*</label></label>
+                            <input type="email" formControlName="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Email.errors }" [(ngModel)]="dangkyService.selectedDangKy.Email" />
+                            <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
+                                <div *ngIf="f.Email.errors.required">Bạn chưa nhập Email!</div>
                             </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input type="text" formControlName="email" #name [(ngModel)]="employeeService.selectedEmployee.email" required>
-                                    <label>Email <label class="red-text">*</label></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <button class="btn btn-custom left" type="button" (click)="resetForm(employeeForm)">Reset</button>
-                                    <button class="btn btn-custom left" type="submit" [disabled]="!employeeForm.valid">Submit</button>
-                                    <a [routerLink]="['/']" class="btn btn-link">Trang chủ</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="form-group">
+                            <!-- <button [disabled]="loading" class="btn btn-primary">Đăng ký</button> -->
+                            <button class="btn btn-custom left" type="button" (click)="resetForm(registerForm)">Reset</button>
+                            <button class="btn btn-custom left" type="submit">Đăng ký</button>
+                            <a [routerLink]="['/']" class="right" style="line-height:40px;">Trang chủ</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

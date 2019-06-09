@@ -1,50 +1,57 @@
 <div class="container">
-    <div class="row register">
-        <div class="col-7">
-            <h2>Đăng ký</h2>
-            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-                <div class="form-group">
-                    <label for="name">Họ Tên</label>
-                    <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                        <div *ngIf="f.name.errors.required">Bạn chưa nhập Họ tên!</div>
-                    </div>
+    <div class="row register" style="margin: 50px 0">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-content">
+                    <h2 style="text-align:center; color:#563d7c;">Đăng ký</h2>
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
+                        <input type="hidden" formControlName="_id" [(ngModel)]="dangkyService.selectedDangKy._id" />
+                        <div class="form-group input-field">
+                            <label>Tên hiển thị <label class="red-text">*</label></label>
+                            <input type="text" formControlName="TenHienThi" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.TenHienThi.errors }" [(ngModel)]="dangkyService.selectedDangKy.TenHienThi" />
+                            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                <div *ngIf="f.TenHienThi.errors.required">Bạn chưa nhập Họ tên!</div>
+                            </div>
+                        </div>
+                        <div class="form-group input-field">
+                            <label>Tên đăng nhập <label class="red-text">*</label></label>
+                            <input type="text" formControlName="TenDangNhap" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.TenDangNhap.errors }" [(ngModel)]="dangkyService.selectedDangKy.TenDangNhap" />
+                            <div *ngIf="submitted && f.TenDangNhap.errors" class="invalid-feedback">
+                                <div *ngIf="f.TenDangNhap.errors.required">Bạn chưa nhập Tên đăng nhâp!</div>
+                            </div>
+                        </div>
+                        <div class="form-group input-field">
+                            <label>Mật khẩu <label class="red-text">*</label></label>
+                            <input type="password" formControlName="MatKhau" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.MatKhau.errors }" [(ngModel)]="dangkyService.selectedDangKy.MatKhau" />
+                            <div *ngIf="submitted && f.MatKhau.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.MatKhau.required">Bạn chưa nhập Mật khẩu!</div>
+                                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                            </div>
+                        </div>
+                        <div class="form-group input-field">
+                            <label>Số điện thoại <label class="red-text">*</label></label>
+                            <input type="text" formControlName="SoDienThoai" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.SoDienThoai.errors }" [(ngModel)]="dangkyService.selectedDangKy.SoDienThoai" />
+                            <div *ngIf="submitted && f.SoDienThoai.errors" class="invalid-feedback">
+                                <div *ngIf="f.SoDienThoai.errors.required">Bạn chưa nhập Số điện thoại!</div>
+                            </div>
+                        </div>
+                        <div class="form-group input-field">
+                            <label>Email <label class="red-text">*</label></label>
+                            <input type="email" formControlName="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Email.errors }" [(ngModel)]="dangkyService.selectedDangKy.Email" />
+                            <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
+                                <div *ngIf="f.Email.errors.required">Bạn chưa nhập Email!</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <!-- <button [disabled]="loading" class="btn btn-primary">Đăng ký</button> -->
+                            <button class="btn btn-custom left" type="button" (click)="resetForm(registerForm)">Reset</button>
+                            <button class="btn btn-custom left" type="submit">Đăng ký</button>
+                            <a [routerLink]="['/']" class="right" style="line-height:40px;">Trang chủ</a>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="username">Tên đăng nhập</label>
-                    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                        <div *ngIf="f.username.errors.required">Bạn chưa nhập Tên đăng nhâp!</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="password">Mật khẩu</label>
-                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                        <div *ngIf="f.password.errors.required">Bạn chưa nhập Mật khẩu!</div>
-                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Số điện thoại</label>
-                    <input type="phone" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
-                    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                        <div *ngIf="f.password.phone.required">Bạn chưa nhập Số điện thoại!</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                        <div *ngIf="f.password.errors.required">Bạn chưa nhập Email!</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <button [disabled]="loading" class="btn btn-primary">Đăng ký</button>
-                    <a [routerLink]="['/']" class="btn btn-link">Trang chủ</a>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
-
 </div>

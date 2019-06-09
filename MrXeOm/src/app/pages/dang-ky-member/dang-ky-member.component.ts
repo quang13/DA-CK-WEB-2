@@ -1,28 +1,86 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { DangKyService } from '../dang-ky/dangky.service';
+import { Dangky } from '../dang-ky/dangky.model';
+import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+declare var M: any;
 @Component({
-  selector: 'app-registerKH',
+  selector: 'app-dangkykhachhang',
   templateUrl: 'dang-ky-member.component.html',
-  styleUrls: ['../pages.component.css']
+  providers: [DangKyService]
 })
 export class RegisterKHComponent implements OnInit {
-    private registerForm: FormGroup;
-    private loading = false;
-    private submitted = false;
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router
-  ) {}
+  registerForm: FormGroup;
+  constructor(private dangkyService: DangKyService, private formBuilder: FormBuilder) {
+    // this.checkInForm = this.formBuilder.group({});
+   }
+
   ngOnInit() {
+    this.resetForm();
+    // this.refreshRegisterList();
     this.registerForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      phone: ['', Validators.required],
-      email: ['', Validators.required],
+      _id: ['', Validators.required],
+      TenHienThi: ['', Validators.required],
+      TenDangNhap: ['', Validators.required],
+      MatKhau: ['', Validators.required],
+      DiaChi: ['', [Validators.required, Validators.minLength(6)]],
+      SoDienThoai: ['', Validators.required],
+      Email: ['', Validators.required],
   });
   }
+
+  resetForm(form?: NgForm) {
+    if (form) {
+      form.reset();
+    }
+    this.dangkyService.selectedDangKy = {
+      _id: '',
+      MaTaiKhoan: null,
+      TenDangNhap: '',
+      MatKhau: '',
+      TenHienThi: '',
+      DiaChi: '',
+      SoDienThoai: '',
+      Email: '',
+      BiXoa: null,
+      MaLoaiTaiKhoan: null,
+    }
+  }
+
+  onSubmit(form: NgForm) {
+    if (form.value._id == '') {
+      this.dangkyService.postRegister(form.value).subscribe((res) => {
+        this.resetForm(form);
+        // this.refreshRegisterList();
+        M.toast({ html: 'Đăng ký thành công', classes: 'rounded' });
+      });
+    } else {
+      this.dangkyService.putRegister(form.value).subscribe((res) => {
+        this.resetForm(form);
+        // this.refreshRegisterList();
+        M.toast({ html: 'Cập nhật thành công', classes: 'rounded' });
+      });
+    }
+  }
+
+  // refreshRegisterList() {
+  //   this.dangkyService.getRegisterList().subscribe((res) => {
+  //     this.dangkyService.dangky = res as Dangky[];
+  //   });
+  // }
+
+  // onEdit(emp: Dangky) {
+  //   this.dangkyService.selectedDangKy = emp;
+  // }
+
+  // onDelete(_id: string, form: NgForm) {
+  //   if (confirm('Are you sure to delete this record ?') == true) {
+  //     this.dangkyService.deleteRegister(_id).subscribe((res) => {
+  //       this.refreshRegisterList();
+  //       this.resetForm(form);
+  //       M.toast({ html: 'Xoá thành công', classes: 'rounded' });
+  //     });
+  //   }
+  // }
 }
