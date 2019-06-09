@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const TaiKhoan = require('../../models/taikhoan');
 const bcrypt = require('bcrypt');
-router.post('/dangki', (req, res) =>{
+router.post('/', (req, res) =>{
     // check xem các giá trị đã nhập đã có trong CSDL hay chưa
     TaiKhoan.findOne({TenDangNhap: req.body.TenDangNhap}, (err, data) =>{
         if(!err) 
@@ -67,7 +67,7 @@ router.post('/dangki', (req, res) =>{
         BiXoa: false,
         MaLoaiTaiKhoan: 1
     });
-    if(!(tk.TenDangNhap&&tk.MatKhau||tk.SoDienThoai||tk.DiaChi||tk.Email||tk.TenHienThi))
+    if(!(tk.TenDangNhap||tk.MatKhau||tk.SoDienThoai||tk.DiaChi||tk.Email||tk.TenHienThi))
     {
         res.send({
             success: false,
@@ -92,3 +92,5 @@ router.post('/dangki', (req, res) =>{
     });
     res.redirect('/'); // điều hướng về trang chủ
 });
+
+module.exports = router;

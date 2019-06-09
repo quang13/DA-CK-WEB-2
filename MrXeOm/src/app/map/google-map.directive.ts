@@ -52,6 +52,7 @@ export class DirectionsMapDirective {
                     me.estimatedDistance = point.distance.text;
                     console.log(me.estimatedTime);
                     console.log('Estimated travel time: ' + point.duration.text + ' (' + point.distance.text + ')');
+                    //console.log(point.distance.value); lấy ra dữ liệu quãng đường từ điển A đến điểm B là mét
 
                 } else {
                     console.log('Directions request failed due to ' + status);

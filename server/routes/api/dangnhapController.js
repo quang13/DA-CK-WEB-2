@@ -7,7 +7,7 @@ const expressSession = require('express-session'); //Xử lí session bằng exp
 const TaiKhoan = require('../../models/taikhoan');
 
 // địa chỉ sẽ là localhost:3000/api/taikhoan/dangnhap
-router.post('./api/taikhoan/dangnhap', (req, res) =>{
+router.post('/', (req, res) =>{
     TaiKhoan.findOne(({TenDangNhap: req.body.TenDangNhap, MatKhau: req.body.MatKhau, BiXoa: false}), (err, data) =>{
         if(!err) 
         {
@@ -23,3 +23,5 @@ router.post('./api/taikhoan/dangnhap', (req, res) =>{
         }
     });
 });
+
+module.exports = router;

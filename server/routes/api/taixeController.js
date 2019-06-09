@@ -3,7 +3,7 @@ const TaiKhoan = require('../../models/taikhoan');
 const ObjectID = require('mongoose').Types.ObjectId;
 
 //get all
-router.get('/taixe', (req, res) =>{
+router.get('/', (req, res) =>{
     TaiKhoan.find({MaLoaiTaiKhoan: 2}, (err, data) =>{
         if(!err) {
             res.send(data);
@@ -15,7 +15,7 @@ router.get('/taixe', (req, res) =>{
 });
 
 //getbyid
-router.get('/taixe/:id', (req, res) =>{
+router.get('/:id', (req, res) =>{
     if(!ObjectID.isValid(req.params.id))
     {
         return res.status(400).send(`Không tìm thấy dữ liệu với id: ${req.params.id}`);
@@ -32,7 +32,7 @@ router.get('/taixe/:id', (req, res) =>{
 });
 
 //update
-router.put('/taixe/:id', (err, res) =>{
+router.put('/:id', (err, res) =>{
     if(!ObjectID.isValid(req.params.id))
     {
         return res.status(400).send(`Không tìm thấy dữ liệu với id: ${req.params.id}`);
@@ -57,7 +57,7 @@ router.put('/taixe/:id', (err, res) =>{
     });
 });
 
-router.delete('/admin/:id', (req, res) =>{
+router.delete('/:id', (req, res) =>{
     if(!ObjectID.isValid(req.params.id))
     {
         return res.status(400).send(`Không tìm thấy dữ liệu với id: ${req.params.id}`);
