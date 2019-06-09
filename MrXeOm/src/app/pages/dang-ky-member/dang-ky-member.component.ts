@@ -8,6 +8,7 @@ declare var M: any;
 @Component({
   selector: 'app-dangkykhachhang',
   templateUrl: 'dang-ky-member.component.html',
+  styleUrls: ['../pages.component.css'],
   providers: [DangKyService]
 })
 export class RegisterKHComponent implements OnInit {
@@ -36,13 +37,16 @@ export class RegisterKHComponent implements OnInit {
     }
     this.dangkyService.selectedDangKy = {
       _id: '',
-      MaTaiKhoan: null,
       TenDangNhap: '',
       MatKhau: '',
       TenHienThi: '',
       DiaChi: '',
       SoDienThoai: '',
+      CMND: '',
       Email: '',
+      Avatar: '',
+      HinhXe: '',
+      BienSoXe: '',
       BiXoa: null,
       MaLoaiTaiKhoan: null,
     }

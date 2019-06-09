@@ -1,7 +1,9 @@
 agm-map {
-    height: 550px;
+    height: 100vh;
     width: 100%;
-    border: 2px solid #004080;
+    position:absolute;
+    top: 0;
+    z-index:-1;
 }
 
 
@@ -18,5 +20,26 @@ agm-map {
 
 .thongtin {
     font-family: 'Farsan', cursive;
-    font-size: 24px;
+    font-size: 20px;
+}
+
+.thongTinDatXe {
+    display: none;
+    width: 250px;
+}
+
+.thongTinDatXe:hover {
+    display: block;
+}
+
+.abcxyz:hover{
+    background-color: rgba(255,255,255,1);
+}
+
+.abcxyz:hover .thongTinDatXe {
+    display: block;
+}
+
+input[type=text]{
+    background-color: rgba(255,255,255,1);
 }

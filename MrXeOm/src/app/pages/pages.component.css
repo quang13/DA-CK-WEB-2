@@ -1,8 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Upright|Lemonada&display=swap');
 .register {
-    margin-top: 50px;
+    display: block;
+    width: 50%;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    z-index: 2;
 }
 
 .register h2 {
     text-align: center;
     color: #D76D77;
+}
+
+.gioithieu {
+    background-image: linear-gradient(-75deg, #C5796D 0%, #DBE6F6 100%);
+    width: 50%;
+    display: block;
+    height: 100vh;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Cormorant Upright', serif;
+}
+.gioithieu fa{
+    padding: 10px;
+    color: white;
+}
+
+.card {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 350px;
+    height: 80%;
+}
+
+@media(max-width:700px) {
+    .register {
+        display: block;
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        left: 0;
+        z-index: 2;
+    }
 }

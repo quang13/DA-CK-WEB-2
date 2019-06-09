@@ -15,6 +15,7 @@ export class DirectionsMapDirective {
     @Input() directionsDisplay: any;
     @Input() estimatedTime: any;
     @Input() estimatedDistance: any;
+    @Input() price: any;
     constructor(
         private gmapsApi: GoogleMapsAPIWrapper,
         ) { }
@@ -50,9 +51,10 @@ export class DirectionsMapDirective {
                     var point = response.routes[0].legs[0];
                     me.estimatedTime = point.duration.text;
                     me.estimatedDistance = point.distance.text;
+                    me.price = point.distance.value / 1000 * 2000;
                     console.log(me.estimatedTime);
                     console.log('Estimated travel time: ' + point.duration.text + ' (' + point.distance.text + ')');
-                    //console.log(point.distance.value); lấy ra dữ liệu quãng đường từ điển A đến điểm B là mét
+                    console.log(point.distance.value);
 
                 } else {
                     console.log('Directions request failed due to ' + status);

@@ -7,6 +7,7 @@ declare var M: any;
 @Component({
   selector: 'app-dangkytaixe',
   templateUrl: './dang-ky-taixe.component.html',
+  styleUrls: ['../pages.component.css'],
   providers: [DangKyService]
 })
 export class RegisterTXComponent implements OnInit {
@@ -26,6 +27,8 @@ export class RegisterTXComponent implements OnInit {
       DiaChi: ['', [Validators.required, Validators.minLength(6)]],
       SoDienThoai: ['', Validators.required],
       Email: ['', Validators.required],
+      Avatar: ['', Validators.required],
+      BienSoXe: ['', Validators.required],
   });
   }
 
@@ -35,13 +38,16 @@ export class RegisterTXComponent implements OnInit {
     }
     this.dangkyService.selectedDangKy = {
       _id: '',
-      MaTaiKhoan: null,
       TenDangNhap: '',
       MatKhau: '',
       TenHienThi: '',
       DiaChi: '',
       SoDienThoai: '',
+      CMND: '',
       Email: '',
+      Avatar: '',
+      HinhXe: '',
+      BienSoXe: '',
       BiXoa: null,
       MaLoaiTaiKhoan: null,
     }
@@ -62,4 +68,5 @@ export class RegisterTXComponent implements OnInit {
       });
     }
   }
+
 }
