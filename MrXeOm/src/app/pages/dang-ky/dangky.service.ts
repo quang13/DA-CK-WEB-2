@@ -9,7 +9,7 @@ import { Dangky } from './dangky.model';
 export class DangKyService {
   selectedDangKy: Dangky;
   dangky: Dangky[];
-  readonly baseURL = 'http://localhost:3000/taikhoan';
+  readonly baseURL = 'http://localhost:8080/api/dangki';
 
   constructor(private http: HttpClient) { }
 

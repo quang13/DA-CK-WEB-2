@@ -11,29 +11,28 @@ nav ul li:hover {
 nav ul ul {
     position: absolute;
     left: 0;
-    top: 80px;
-    width: 120px;
     opacity: 0;
     display: none;
     transition: all 1s;
-    padding-left: 0;
 }
 
 nav ul ul li {
     float: none;
-    text-align: left;
+    width: 150px;
+    text-align: center;
 }
 
 nav ul li:hover>ul {
-    left: 15px;
-    top: 70px;
+    top: 60px;
     opacity: 1;
     display: inline-block;
-    background-color: #563d7c;
+    background-color: #ee6e73;
 }
 
 a {
     text-decoration: none;
+    width: 150px;
+    text-align: center;
 }
 
 a:hover {

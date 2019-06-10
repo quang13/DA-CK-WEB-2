@@ -51,9 +51,17 @@ export class DirectionsMapDirective {
                     var point = response.routes[0].legs[0];
                     me.estimatedTime = point.duration.text;
                     me.estimatedDistance = point.distance.text;
+<<<<<<< HEAD
                     me.price = 2000 * (point.distance.value / 1000);
                     console.log(me.estimatedTime);
                     console.log('Estimated travel time: ' + point.duration.text + ' (' + point.distance.text + ')');
+=======
+                    me.price = point.distance.value / 1000 * 2000;
+                    console.log(me.estimatedTime);
+                    console.log('Estimated travel time: ' + point.duration.text + ' (' + point.distance.text + ')');
+                    console.log(point.distance.value);
+
+>>>>>>> bd123ab92e12b4d449b148f40d11f86f709a2904
                 } else {
                     console.log('Directions request failed due to ' + status);
                 }
