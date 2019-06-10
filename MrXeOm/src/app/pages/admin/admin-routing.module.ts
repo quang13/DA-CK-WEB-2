@@ -3,19 +3,19 @@ import { Routes, RouterModule } from '@angular/router';
 import * as _Admin from "./admin-index";
 const routes: Routes = [
     {
-        "path": "",
+        "path": "admin",
         "component": _Admin.AdminComponent,
         data: {
             title: 'Admin'
         },
         "children": [
-            // {
-            //     "path": "khai-bao-tai-khoan",
-            //     "component": _Admin.AppUserComponent,
-            //     data: {
-            //         title: 'Khai báo tài khoản'
-            //     }
-            // },
+            {
+                "path": "danh-sach-admin",
+                "component": _Admin.DanhSachAdminComponent,
+                data: {
+                    title: 'Danh sách admin'
+                }
+            },
         ]
     }
 ];

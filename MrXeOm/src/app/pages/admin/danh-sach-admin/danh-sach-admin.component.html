@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="col-xl-12">
+        <div class="m-portlet">
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text"> Danh sách tài khoản admin </h3>
+                    </div>
+                </div>
+                <div class="m-portlet__head-tools">
+                    <ul class="m-portlet__nav">
+                        <li class="m-portlet__nav-item">
+                            <button type="button" (click)="opendialog()"
+                            class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air">
+                            <i class="la la-plus"></i>
+                            Mới
+                        </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="m-portlet__body">
+                <div class="m-form">
+                    <div class="portlet-loading-shade" *ngIf="isLoading">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                    <div class="m-form__filtration">
+                        <div class="row align-items-center">
+                            <div class="col-md-3 m--margin-bottom-10-mobile">
+                                <mat-form-field class="select-margin-right-20">
+                                    <input matInput class="example-right-align"
+                                        (keyup)="_data.mattable_filter($event.target.value, dataSource)"
+                                        placeholder="Tìm kiếm">
+                                    <mat-icon matSuffix>search</mat-icon>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mat-table__wrapper">
+
+                    <mat-table [dataSource]="dataSource" matSort>
+                        <ng-container matColumnDef="TenDangNhap">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>Tên đăng nhập </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.TenDangNhap}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="MatKhau">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>Mật khẩu</mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.MatKhau}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="TenHienThi">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Họ tên </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.TenHienThi}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="SoDienThoai">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Điện thoại </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.SoDienThoai}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Email">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.Email}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="DiaChi">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Địa chỉ </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.DiaChi}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="BiXoa">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Bị xoá </mat-header-cell>
+                            <mat-cell *matCellDef="let row">
+                                <span *ngIf="row.BiXoa==false?'Chưa xoá':'Bị xoá'"></span>
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="ThaoTac">
+                            <mat-header-cell class="control1_table" *matHeaderCellDef> Thao tác </mat-header-cell>
+                            <mat-cell class="control1_table" *matCellDef="let row">
+                                <button (click)="opendialog(row.Id)"
+                                    class="btn m-btn m-btn--hover-primary m-btn--icon m-btn--icon-only m-btn--pill m-btn--air"
+                                    type="button" title="sửa">
+                                    <i class="la la-edit"></i>
+                                </button>
+                                <button (click)="delete(row)"
+                                    class="btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill m-btn--air"
+                                    type="button" title="xóa">
+                                    <i class="la la-trash"></i>
+                                </button>
+                            </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;">
+                        </mat-row>
+                    </mat-table>
+
+                </div>
+                <div class="mat-table__bottom">
+                    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25,50,100]"></mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

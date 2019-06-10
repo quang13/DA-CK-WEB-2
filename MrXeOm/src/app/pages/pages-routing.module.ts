@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterTXComponent } from './dang-ky-taixe/dang-ky-taixe.component';
 import { TaiXeCompopent } from './tai-xe/tai-xe.component';
+import { AdminComponent } from './admin/admin-index';
 
 const routes: Routes = [
     {
@@ -14,12 +15,8 @@ const routes: Routes = [
         // "canActivate": [AuthGuardService],
         "children": [
             // {
-            //     "path": "index",
-            //     "loadChildren": ".\/default\/index.module#IndexModule"
-            // },
-            // {
-            //     "path": "DangKyKhachHang",
-            //     "loadChildren": "./dang-ky-member/dang-ky-member.module#DangKyMemberModule"
+            //     "path": "admin",
+            //     "loadChildren": ".\/admin\/admin.module#AdminModule"
             // },
         ]
     },

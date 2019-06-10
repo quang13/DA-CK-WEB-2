@@ -6,10 +6,10 @@ const session = require('connect-mongo');// Lưu session vào mongodb
 const expressSession = require('express-session'); //Xử lí session bằng express
 const TaiKhoan = require('../../models/taikhoan');
 
-// địa chỉ sẽ là localhost:3000/api/taikhoan/dangnhap
+// địa chỉ sẽ là localhos:8080/api/dangnhap
 router.post('/', (req, res) =>{
     TaiKhoan.findOne(({TenDangNhap: req.body.TenDangNhap, MatKhau: req.body.MatKhau, BiXoa: false}), (err, data) =>{
-        if(!err) 
+        if(!err)
         {
             res.send({
                 success: true,
