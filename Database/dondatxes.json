@@ -1,0 +1,1 @@
+{"_id":{"$oid":"5cda4ad50b086d0e4089f015"},"MaDonDatXe":{"$numberInt":"1001"},"NgayDatCuoc":{"$date":{"$numberLong":"1546275600000"}},"MaTaiXe ":{"$numberInt":"100"},"DiemDi":"A","DiemDen":"B","TongTien":{"$numberDecimal":"300000"},"MaKhachHang":"Null","MaTinhTrang":"1"}

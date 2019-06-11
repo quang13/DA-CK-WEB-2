@@ -4,11 +4,6 @@
             <div class="card-content">
                 <h2>Đăng ký</h2>
                 <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
-                    <div class="form-group input-field">
-                            <input type='file' (change)="readURL(this);" />
-                            <img id="blah" [src]="url"/>
-                    </div>
-
                     <input type="hidden" formControlName="_id" [(ngModel)]="dangkyService.selectedDangKy._id" />
                     <div class="form-group input-field">
                         <label>Tên hiển thị <label class="red-text">*</label></label>
@@ -47,12 +42,12 @@
                         </div>
                     </div>
                     <div class="form-group input-field">
-                            <label>Biển số xe <label class="red-text">*</label></label>
-                            <input type="text" formControlName="BienSoXe" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.BienSoXe.errors }" [(ngModel)]="dangkyService.selectedDangKy.BienSoXe" />
-                            <div *ngIf="submitted && f.BienSoXe.errors" class="invalid-feedback">
-                                <div *ngIf="f.BienSoXe.errors.required">Bạn chưa nhập Biển số xe!</div>
-                            </div>
+                        <label>Biển số xe <label class="red-text">*</label></label>
+                        <input type="text" formControlName="BienSoXe" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.BienSoXe.errors }" [(ngModel)]="dangkyService.selectedDangKy.BienSoXe" />
+                        <div *ngIf="submitted && f.BienSoXe.errors" class="invalid-feedback">
+                            <div *ngIf="f.BienSoXe.errors.required">Bạn chưa nhập Biển số xe!</div>
                         </div>
+                    </div>
                     <div class="form-group">
                         <button class="btn btn-custom left" type="button" (click)="resetForm(registerForm)">Reset</button>
                         <button class="btn btn-custom left" type="submit">Đăng ký</button>
@@ -63,11 +58,17 @@
         </div>
     </div>
     <div class="gioithieu">
-        <a [routerLink]="['/']"><fa name="facebook-square"></fa></a>
-        <a [routerLink]="['/']"><fa name="instagram"></fa></a>
-        <a [routerLink]="['/']"><fa name="twitter-square"></fa></a>
-        <div style="font-family: 'Lemonada', cursive;">Mr.XeOM</div>
-        <p>Nhunnnnnnnnnnnnnnnn cute</p>
-        <p style="margin-top:65%; font-size:18px">Design by ...................</p>
+        <a [routerLink]="['/']">
+            <fa name="facebook-square"></fa>
+        </a>
+        <a [routerLink]="['/']">
+            <fa name="instagram"></fa>
+        </a>
+        <a [routerLink]="['/']">
+            <fa name="twitter-square"></fa>
+        </a>
+        <div style="font-family: 'Lemonada', cursive; margin-top:20px;">Mr.XeOM</div>
+        <p style="margin-top:25%; font-size:24px">Nhunnnnnnnnnnnnnnnn cute</p>
+        <p style="margin-top:40%; font-size:16px">Design by ...................</p>
     </div>
 </div>

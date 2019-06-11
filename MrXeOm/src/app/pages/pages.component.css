@@ -14,7 +14,7 @@
 }
 
 .gioithieu {
-    background-image: linear-gradient(-75deg, #C5796D 0%, #DBE6F6 100%);
+    background-image: linear-gradient(-75deg, #89216B 0%, #DA4453 100%);
     width: 50%;
     display: block;
     height: 100vh;
@@ -26,9 +26,16 @@
     text-align: center;
     font-family: 'Cormorant Upright', serif;
 }
-.gioithieu fa{
+
+.gioithieu fa {
     padding: 10px;
     color: white;
+    transition: 0.5s;
+}
+
+.gioithieu fa:hover {
+    padding: 10px;
+    color: lightsalmon;
 }
 
 .card {
