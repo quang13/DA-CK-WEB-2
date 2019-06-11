@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit{
           console.log('error is ', error);
         });
       } else {
-          alert('enter user name and password');
+          alert('Nhập Tên đăng nhập và mật khẩu');
       }
     }
 }
