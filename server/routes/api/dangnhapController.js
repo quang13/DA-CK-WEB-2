@@ -11,7 +11,7 @@ const TaiKhoan = require('../../models/taikhoan');
 //const configToken = require('./configToken');
 
 //địa chỉ sẽ là localhos:8080/api/dangnhap
-router.post('/', (req, res) =>{
+router.post('/', (req, res) => {
     var hashData = req.body.MatKhau;
     // bcrypt.genSalt(10, (err, salt) =>{
     //     if(err) throw err;
@@ -21,26 +21,22 @@ router.post('/', (req, res) =>{
     //     });
     // });
     //Tìm một tài khoản có mật khẩu = hashData
-    TaiKhoan.findOne({MatKhau: hashData}, (err, doc) =>{
-        if(!err){
-            TaiKhoan.findOne({TenDangNhap: req.body.TenDangNhap, MatKhau: hashData}, (err, data) =>{
-                if(!err)
-                {
+    TaiKhoan.findOne({ TenDangNhap: req.body.TenDangNhap }, (err, doc) => {
+        if (!err) {
+            TaiKhoan.findOne({ MatKhau: hashData }, (err, data) => {
+                if (!err) {
                     return res.send({
                         success: true,
-                        message: 'Đăng nhập thành công', 
+                        message: 'Đăng nhập thành công',
                     });
-                }
-                else 
-                {
+                } else {
                     return res.send({
                         success: false,
                         message: 'Lỗi, không tìm thấy tài khoản này hay truy vấn về cơ sở dữ liệu bị lỗi'
-                    });  
+                    });
                 }
             });
-        }
-        else{
+        } else {
             res.send({
                 success: false,
                 message: 'Không tìm thấy mật khẩu trùng khớp'

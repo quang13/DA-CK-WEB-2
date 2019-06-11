@@ -1,17 +1,17 @@
 <div class="body">
     <div class="container" style="width: 700px;">
-        <form class="form-signin card" style="padding:40px 20px;">
+        <form class="form-signin card" [formGroup]="loginForm" style="padding:40px 20px;">
             <h2 style="text-align:center;">Đăng nhập</h2>
             <div style="padding-top: 30px; margin-bottom: 20px">
-                <input name="TenDangNhap" [(ngModel)]="dangnhap.TenDangNhap" type="text" class="form-control" placeholder="Tên đăng nhập" required autofocus>
-                <input name="MatKhau" [(ngModel)]="dangnhap.MatKhau" type="password" class="form-control" placeholder="Mật khẩu" required>
+                <input name="TenDangNhap" formControlName="TenDangNhap" [(ngModel)]="user.TenDangNhap" type="text" class="form-control" placeholder="Tên đăng nhập" required autofocus>
+                <input name="MatKhau" formControlName="MatKhau" [(ngModel)]="user.MatKhau" type="password" class="form-control" placeholder="Mật khẩu" required>
             </div>
             <div>
                 <input type="checkbox" [(ngModel)]="theCheckbox" data-md-icheck (change)="toggleVisibility($event)" />
                 <p style="margin-left: 20px; line-height: 10px">Lưu thông tin</p>
             </div>
             <div class="form-group" style="margin: 20px auto">
-                <button class="btn btn-info" type="submit">Đăng nhập</button>
+                <button class="btn btn-info" (click)="validateLogin();" type="button">Đăng nhập</button>
                 <a href="" style="line-height:40px; padding-left:10px;">Trang chủ</a>
             </div>
         </form>
