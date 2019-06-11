@@ -1,7 +1,7 @@
 nav ul li {
     list-style: none;
     position: relative;
-    z-index: 1;
+    z-index: 99999;
 }
 
 nav ul li:hover {
@@ -18,7 +18,7 @@ nav ul ul {
 
 nav ul ul li {
     float: none;
-    width: 150px;
+    width: 100px;
     text-align: center;
 }
 
@@ -31,8 +31,9 @@ nav ul li:hover>ul {
 
 a {
     text-decoration: none;
-    width: 150px;
+    width: 100px;
     text-align: center;
+    padding: 0;
 }
 
 a:hover {

@@ -1,8 +1,8 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { DangKyService } from '../dang-ky/dangky.service';
+import { DangKyService } from './dangky.service';
 
-describe('EmployeeService', () => {
+describe('RegisterService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [DangKyService]

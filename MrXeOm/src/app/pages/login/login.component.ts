@@ -6,18 +6,19 @@ import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-login',
   templateUrl: 'login.component.html',
-  styleUrls: ['../pages.component.css'],
+  styleUrls: ['./login.component.css'],
   providers: [ LoginService ]
 })
 export class LoginComponent {
-    // private loginForm: FormGroup;
+    private loginForm: FormGroup;
     // private loading = false;
     // private submitted = false;
     // private returnUrl: string;
     // public taikhoan: TaiKhoan;
-    // constructor(private loginService: LoginService) {
-    //   this.taikhoan = new TaiKhoan();
-    // }
+    
+    
+    constructor(private loginService: LoginService) {
+    }
 
     // validateLogin() {
     //   if(this.taikhoan.username && this.taikhoan.password) {

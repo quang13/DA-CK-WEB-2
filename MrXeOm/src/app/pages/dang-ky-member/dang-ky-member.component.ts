@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DangKyService } from '../dang-ky/dangky.service';
-import { Dangky } from '../dang-ky/dangky.model';
+import { DangKyService } from '../../_services/dang-ky/dangky.service';
+import { Dangky } from '../../_services/dang-ky/dangky.model';
 import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 declare var M: any;
