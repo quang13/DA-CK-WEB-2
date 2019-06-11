@@ -1,11 +1,12 @@
 const admin = require('./adminController');
 const member = require('./memberController');
 const dangnhap = require('./dangnhapController');
-const dondathang = require('./donDatHangController');
+const dondatxe = require('./donDatXeController');
 const loaitaikhoan = require('./loaiTaiKhoanController');
 const taixe = require('./taixeController');
 const dangxuat = require('./logoutController');
 const dangki = require('./dangkiController');
+const dangkitaixe = require('./dangkitaixeController');
 const tinhtrang = require('./tinhTrangController');
 var express = require("express");
 
@@ -20,6 +21,7 @@ app.use('/dangki', dangki);
 app.use('/dangxuat', dangxuat);
 //app.use('/tinhtrang', tinhtrang);
 app.use('/loaitaikhoan', loaitaikhoan);
-app.use('/dondathang', dondathang);
+app.use('/dondatxe', dondatxe);
+app.use('/dangkitaixe', dangkitaixe);
 
 module.exports = app;
