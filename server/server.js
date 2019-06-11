@@ -11,7 +11,7 @@ const port = process.env.PORT || 8080;
 const api = require('./routes/api/main');
 const FileStore = require('session-file-store')(session);
 //set secret
-//app.set('Secret', configToken.secret);
+// app.set('Secret', configToken.secret);
 let options;
 app.use(cookieParser()); // đọc cookie (cần cho xác thực)
 app.use(session({
