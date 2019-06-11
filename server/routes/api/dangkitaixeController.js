@@ -1,79 +1,7 @@
 const router = require('express').Router();
 const TaiKhoan = require('../../models/taikhoan');
-const ObjectID = require('mongoose').Types.ObjectId;
-
-router.get('/', (req, res) =>{
-    TaiKhoan.find({MaLoaiTaiKhoan: 0}, (err, data) =>{
-        if(!err) {
-            res.send(data);
-        }
-        else {
-            console.log('Error in Retriving TaiKhoan: ' +JSON.stringify(err, undefined, 2));
-        }
-    });
-});
-
-//localhost:8080/taikhoan/admin/:id
-router.get('/:id', (req, res) =>{
-    if(!ObjectID.isValid(req.params.id))
-    {
-        return res.status(400).send(`Không tìm thấy dữ liệu với id: ${req.params.id}`);
-    }
-    TaiKhoan.findById({_id: req.params.id, MaLoaiTaiKhoan: 0}, (err, data) =>{
-        if(!err)
-        {
-            return res.send(data);
-        }
-        else{
-            console.log('Error in Retriving TaiKhoan: ' +JSON.stringify(err, undefined, 2));
-        }
-    });
-});
-
-//update
-router.post('/update/:id', (err, res) =>{
-    if(!ObjectID.isValid(req.params.id))
-    {
-        return res.status(400).send(`Không tìm thấy dữ liệu với id: ${req.params.id}`);
-    }
-    var tk = new TaiKhoan({
-        TenDangNhap: req.body.TenDangNhap,
-        MatKhau: req.body.MatKhau,
-        TenHienThi: req.body.TenHienThi,
-        DiaChi: req.body.DiaChi,
-        SoDienThoai: req.body.SoDienThoai,
-        Email: req.body.Email,
-        BiXoa: false,
-    });
-    TaiKhoan.findByIdAndUpdate({_id: req.params.id, MaLoaiTaiKhoan: 0}, {$set: tk}, {new: true}, (err, data) =>{
-        if(!err)
-        {
-            return res.send(data);
-        }
-        else{
-            console.log('Error in TaiKhoan Update: ' +JSON.stringify(err, undefined, 2));
-        }
-    });
-});
-
-router.post('delete/:id', (req, res) =>{
-    if(!ObjectID.isValid(req.params.id))
-    {
-        return res.status(400).send(`Không tìm thấy dữ liệu với id: ${req.params.id}`);
-    }
-    TaiKhoan.findByIdAndDelete({_id: req.params.id, MaLoaiTaiKhoan: 0}, (err, data) =>{
-        if(!err)
-        {
-            return res.send(data);
-        }
-        else{
-            console.log('Error in TaiKhoan Delete: ' +JSON.stringify(err, undefined, 2));
-        }
-    });
-});
-//insert
-router.post('/insert', (req, res) =>{
-    // check xem các giá trị đã nhập đã có trong CSDL hay chưa
+const bcrypt = require('bcrypt');
+router.post('/', (req, res) =>{
     TaiKhoan.findOne({TenDangNhap: req.body.TenDangNhap}, (err, data) =>{
         if(!err) 
         {
@@ -122,9 +50,27 @@ router.post('/insert', (req, res) =>{
             }
         }
         else {
-            return res.send({
+            res.send({
                 success: false,
                 message: 'Lỗi truy vấn dữ liệu!'
+            });
+        }
+    });
+    TaiKhoan.findOne({BienSoXe: req.body.BienSoXe}, (err, data) =>{
+        if(!err)
+        {
+            if(data.length > 0)
+            {
+                return res.send({
+                    success: false,
+                    message: 'Không được dùng xe đã đăng kí trên hệ thống.'
+                });
+            }
+        }
+        else{
+            return res.send({
+                success: false,
+                message: 'Lỗi truy vấn dữ liệu'
             });
         }
     });
@@ -135,17 +81,19 @@ router.post('/insert', (req, res) =>{
         DiaChi: req.body.DiaChi,
         SoDienThoai: req.body.SoDienThoai,
         Email: req.body.Email,
+        Avatar: req.body.Avatar,
+        HinhXe: req.body.HinhXe,
         BiXoa: false,
-        MaLoaiTaiKhoan: 0
+        MaLoaiTaiKhoan: 2 //mã loại tài khoản là 2
     });
-    if(!(tk.TenDangNhap||tk.MatKhau||tk.SoDienThoai||tk.DiaChi||tk.Email||tk.TenHienThi))
+    if(!(tk.TenDangNhap||tk.MatKhau||tk.SoDienThoai||tk.DiaChi||tk.Email||tk.TenHienThi || tk.BienSoXe))
     {
-        res.send({
+        return res.send({
             success: false,
             message: 'Hãy xem lại những trường đã bỏ trống'
         });     
     }
-    tk.MatKhau = bcrypt.hash(tk.MatKhau, 10);
+    //tk.MatKhau = bcrypt.hash(tk.MatKhau, 10);
     tk.save((err, newTK)=>{
         if(err)
         {
@@ -157,10 +105,10 @@ router.post('/insert', (req, res) =>{
         else{
             return res.send({
                 success: true,
-                message: 'Đăng kí thành công tài khoản adim',
+                message: 'Đăng kí thành công',
             });
         }
     });
-    res.redirect('/'); // điều hướng về trang chủ
 });
+
 module.exports = router;

@@ -1,11 +1,9 @@
 import { Injectable, HostListener, ElementRef } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { LoginService } from './login.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { MessageConstants } from '../_common/MessageConstants';
-import { UrlConstants } from '../_common/UrlConstants';
 import { Observable } from 'rxjs/Observable';
 import { isNull } from 'util';
 declare var $: any;
@@ -35,51 +33,16 @@ export class DataService {
     };
     constructor(private _http: HttpClient,
         private _router: Router,
-        private _Login: LoginService,
         private _Toastr: ToastrService) {
         this._Toastr.toastrConfig.positionClass = 'toast-bottom-right';
     }
-    //#number
-    onKeyDownMoney(e: KeyboardEvent) {
-        if (e.keyCode != 16 &&
-            e.keyCode != 37 &&
-            e.keyCode != 38 &&
-            e.keyCode != 39 &&
-            e.keyCode != 40 &&
-            e.keyCode != 9 &&
-            e.keyCode != 8 &&
-            e.keyCode != 0 &&
-            e.keyCode != 109 &&
-            e.keyCode != 110 &&
-            e.keyCode != 190 &&
-            e.keyCode != 188 &&
-            (e.keyCode < 48 || e.keyCode > 57) &&
-            (e.keyCode < 96 || e.keyCode > 105)) {
-            e.preventDefault();
-        }
-    }
-    onKeyDownNumber(e: KeyboardEvent) {
-        if (e.keyCode != 16 &&
-            e.keyCode != 37 &&
-            e.keyCode != 38 &&
-            e.keyCode != 39 &&
-            e.keyCode != 40 &&
-            e.keyCode != 9 &&
-            e.keyCode != 8 &&
-            e.keyCode != 0 &&
-            (e.keyCode < 48 || e.keyCode > 57) &&
-            (e.keyCode < 96 || e.keyCode > 105)) {
-            e.preventDefault();
-        }
-    }
-    //#endregion number
     Scrollbar(el)
     {
         $(el).mCustomScrollbar({ theme: "minimal-dark", alwaysShowScrollbar: true });
     }
     addpathserver(url:string):string
     {
-        return UrlConstants.BASE_API+url;
+        return 'localhost:8080'+url;
     }
     //#region toastr
     toastr_validator() {
@@ -165,21 +128,6 @@ export class DataService {
     //#endregion mattable custom
 
     //#region reques data
-    // createrheader() {
-    //     this.userlogin = this._Login.login(username: string, password: string);
-    //     return {
-    //         'Content-Type': 'application/json',
-    //         'Authorization': (isNull(this.userlogin) ? '' : ("Bearer " + this.userlogin.access_token))
-    //     };
-    // }
-    // get(uri: string) {
-    //     let header = this.createrheader();
-    //     return this._http.get(UrlConstants.BASE_API + uri, { headers: header });
-    // }
-    // post(uri: string, data?: any) {
-    //     let header = this.createrheader();
-    //     return this._http.post(UrlConstants.BASE_API + uri, data, { headers: header });
-    // }
     // public handleError(error: any, el?: string) {
     //     if (error.status == 404) {
     //         this._Toastr.error(MessageConstants.API404);
@@ -190,8 +138,7 @@ export class DataService {
     //         this.login_mess = setTimeout(() => {
     //             this._Toastr.error(MessageConstants.LOGIN_AGAIN_MSG);
     //         }, 400);
-    //         this._Login.logout();
-    //         this._router.navigate([UrlConstants.LOGIN]);
+    //         this._router.navigate(['/login']);
     //         return;
     //     }
     //     if (error.status === 400) {
@@ -219,7 +166,7 @@ export class DataService {
     //         if (el != null) { $(el).remove(); }
     //         return;
     //     } else if (error.status === 403) {
-    //         this._router.navigate([UrlConstants.ACCESSDENIED]);
+    //         this._router.navigate(['/pages-406']);
     //     } else if (error.status === 405) {
     //         this._Toastr.error(MessageConstants.KHONGDUOCPHEP);
     //     } else if (error.status === 409) {
@@ -241,7 +188,7 @@ export class DataService {
     //             this._Toastr.error(errMsg);
     //             return Observable.throw(errMsg);
     //         }
-    //     }
+    //     } 
     // }
     //#endregion reques data
 }

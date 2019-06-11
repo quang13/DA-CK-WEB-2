@@ -15,7 +15,7 @@ export class DanhSachAdminComponent implements OnInit{
     private displayedColumn = ['TenDangNhap', 'TenHienThi', 'Email', 'SoDienThoai', 'BiXoa', 'ThaoTac'];
     private filterColumn = ['TenDangNhap', 'TenHienThi', 'Email', 'SoDienThoai', 'BiXoa'];
     private dataSource: any = new MatTableDataSource<any>();
-    private API = '/api';
+    private API = 'localhost:8080/api/admin';
     @ViewChild(MatPaginator, null) paginator: MatPaginator;
     @ViewChild(MatSort, null) sort: MatSort;
     constructor(private _data: DataService, private _dialog: DialogService, private http: HttpClient)
@@ -30,7 +30,7 @@ export class DanhSachAdminComponent implements OnInit{
     loaddata()
     {
         this.isLoading = true;
-        this.http.get(this.API + '/admin')
+        this.http.get(this.API)
         .subscribe((res: any) =>{
             this.dataSource.data = res;
             this.isLoading = false;
@@ -39,11 +39,19 @@ export class DanhSachAdminComponent implements OnInit{
 
     opendialog(id: any)
     {
-        this._dialog.open_dialog_create(DanhSachAdminCreateComponent, {Id: id}, ()=>this.loaddata());
+        this._dialog.open_dialog_create(DanhSachAdminCreateComponent, {Id: id}, () => this.loaddata());
     }
 
-    delete(id: any)
+    delete(item)
     {
-
+        this._dialog.open_dialog_confirm_delete({TiTle: 'Xoá admin' + item.TenHienThi}, ()=>{
+            this.http.delete(this.API + '/delete/' + item._id)
+            .subscribe((res: any) =>{
+                this._data.toastr_delete_success();
+                this.loaddata();
+            }, (error) =>{
+                throw error;
+            });
+        });
     }
 }

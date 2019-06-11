@@ -12,7 +12,7 @@ declare var M: any;
   providers: [DangKyService]
 })
 export class RegisterKHComponent implements OnInit {
-  registerForm: FormGroup;
+  private registerForm: FormGroup;
   constructor(private dangkyService: DangKyService, private formBuilder: FormBuilder) {
     // this.checkInForm = this.formBuilder.group({});
    }
@@ -47,8 +47,8 @@ export class RegisterKHComponent implements OnInit {
       Avatar: '',
       HinhXe: '',
       BienSoXe: '',
-      BiXoa: null,
-      MaLoaiTaiKhoan: null,
+      BiXoa: false,
+      MaLoaiTaiKhoan: 1,
     }
   }
 

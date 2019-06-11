@@ -13,12 +13,13 @@ var taikhoanSchema = new mongoose.Schema({
     //custom cho tài xế: Những thông tin dưới đây là thêm cho tài xế
     HinhXe: String,
     Avatar: String,
-    CMND: String
+    CMND: {type: String, minlength: 9, maxlength: 10},
+    BienSoXe: String
 
 });
 taikhoanSchema.virtual('mk').set(function(MatKhau){
     this.MatKhau = MatKhau;
-})
+});
 taikhoanSchema.pre('save', function(next){
     var tk = this;
 

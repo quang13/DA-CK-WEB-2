@@ -52,10 +52,6 @@ export class HomeComponent implements OnInit{
     public destination: any; // its a example aleatory position
 
     constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
-        // //set quãng đường và thời gian
-        // this.estimatedDistance = this.vc.estimatedDistance;
-        // this.estimatedTime = this.vc.estimatedTime;
-        // this.money = 2000 * (this.vc.estimatedDistance.value) / 1000;
     }
 
     ngOnInit() {

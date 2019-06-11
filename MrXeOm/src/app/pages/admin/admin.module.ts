@@ -45,9 +45,10 @@ import { DanhSachAdminCreateComponent } from './danh-sach-admin/danh-sach-admin-
         // SelectCustomModule
     ], declarations: [
         _Admin.AdminComponent,
-        DanhSachAdminCreateComponent,
+        _Admin.DanhSachAdminCreateComponent,
     ],
     entryComponents: [
+        _Admin.DanhSachAdminCreateComponent
     ],
     providers: [
         DialogService,

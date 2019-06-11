@@ -49,11 +49,10 @@ export class DirectionsMapDirective {
                     map.setZoom(30);
                     //console.log(me.getcomputeDistance (latLngA, latLngB));
                     var point = response.routes[0].legs[0];
-                    me.estimatedTime = point.duration.text;
+                    me.estimatedTime = Math.round((point.duration.value / 60)) + ' phút';
                     me.estimatedDistance = point.distance.text;
                     me.price = point.distance.value / 1000 * 2000;
-                    console.log(me.estimatedTime);
-                    console.log('Estimated travel time: ' + point.duration.text + ' (' + point.distance.text + ')');
+                    console.log('Thời gian di chuyển ước tính: ' + point.duration.text + ' (' + point.distance.text + ')');
                     console.log(point.distance.value);
 
                 } else {
