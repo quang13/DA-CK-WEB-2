@@ -1,5 +1,4 @@
-export class Dangky {
-    _id: string;
+export class TaiKhoan{
     TenDangNhap: string;
     MatKhau: string;
     TenHienThi: string;
@@ -12,4 +11,5 @@ export class Dangky {
     BienSoXe: string;
     BiXoa: Boolean;
     MaLoaiTaiKhoan: number;
+    token: string;
 }

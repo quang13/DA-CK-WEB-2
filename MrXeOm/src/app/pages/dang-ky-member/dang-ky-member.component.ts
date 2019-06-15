@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DangKyService } from '../../_services/dang-ky/dangky.service';
-import { Dangky } from '../../_services/dang-ky/dangky.model';
+import { TaiKhoan } from '../../_models/taikhoan'
 import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 declare var M: any;
@@ -21,7 +21,7 @@ export class RegisterKHComponent implements OnInit {
     this.resetForm();
     // this.refreshRegisterList();
     this.registerForm = this.formBuilder.group({
-      _id: ['', Validators.required],
+      _id: [''],
       TenHienThi: ['', Validators.required],
       TenDangNhap: ['', Validators.required],
       MatKhau: ['', Validators.required],
@@ -35,8 +35,7 @@ export class RegisterKHComponent implements OnInit {
     if (form) {
       form.reset();
     }
-    this.dangkyService.selectedDangKy = {
-      _id: '',
+    this.dangkyService.selectedTaiKhoan = {
       TenDangNhap: '',
       MatKhau: '',
       TenHienThi: '',
@@ -49,7 +48,8 @@ export class RegisterKHComponent implements OnInit {
       BienSoXe: '',
       BiXoa: false,
       MaLoaiTaiKhoan: 1,
-    }
+      token: null
+    };
   }
 
   onSubmit(form: NgForm) {
@@ -58,12 +58,6 @@ export class RegisterKHComponent implements OnInit {
         this.resetForm(form);
         // this.refreshRegisterList();
         M.toast({ html: 'Đăng ký thành công', classes: 'rounded' });
-      });
-    } else {
-      this.dangkyService.putRegister(form.value).subscribe((res) => {
-        this.resetForm(form);
-        // this.refreshRegisterList();
-        M.toast({ html: 'Cập nhật thành công', classes: 'rounded' });
       });
     }
   }

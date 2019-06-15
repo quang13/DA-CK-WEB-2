@@ -7,12 +7,13 @@ import { LoginComponent } from './login/login.component';
 import { RegisterTXComponent } from './dang-ky-taixe/dang-ky-taixe.component';
 import { TaiXeCompopent } from './tai-xe/tai-xe.component';
 import { AdminComponent } from './admin/admin-index';
+//import { AuthGuard } from '../../../_guards'
 
 const routes: Routes = [
     {
         "path": "",
         "component": PagesComponent,
-        // "canActivate": [AuthGuardService],
+        //"canActivate": [AuthGuard],
         "children": [
             // {
             //     "path": "admin",

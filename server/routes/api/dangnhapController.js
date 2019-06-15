@@ -9,7 +9,7 @@ router.post('/', (req, res) => {
         if (!err) {
             if (user === null) {
                 res.end("Thông tin đăng nhập không đúng");
-            } else if (user.TenDangNhap === req.body.TenDangNhap && bcrypt.compare(req.body.MatKhau, user.MatKhau)===true) {
+            } else if (user.TenDangNhap === req.body.TenDangNhap && user.MatKhau === req.body.MatKhau) {
                 // const token = jwt.sign({
                 //     TenDangNhap: user.TenDangNhap,
                 //     MatKhau: user.MatKhau

@@ -13,16 +13,17 @@ router.get('/', (req, res) =>{
     });
 });
 
-//localhost:8080/taikhoan/admin/:id
+//localhost:8080/api/admin/_id
 router.get('/:id', (req, res) =>{
     if(!ObjectID.isValid(req.params.id))
     {
         return res.status(400).send(`Không tìm thấy dữ liệu với id: ${req.params.id}`);
     }
-    TaiKhoan.findById({_id: req.params.id, MaLoaiTaiKhoan: 0}, (err, data) =>{
+    TaiKhoan.findById(req.params.id, {MaLoaiTaiKhoan: 0}, (err, data) =>{
         if(!err)
         {
-            return res.send(data);
+            if(data!==null) return res.send(data);
+            else return res.send('Dữ liệu rỗng');
         }
         else{
             console.log('Error in Retriving TaiKhoan: ' +JSON.stringify(err, undefined, 2));

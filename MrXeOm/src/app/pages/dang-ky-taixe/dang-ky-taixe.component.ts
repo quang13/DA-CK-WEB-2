@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DangKyService } from '../../_services/dang-ky/dangky.service';
-import { Dangky } from '../../_services/dang-ky/dangky.model';
-
+import { TaiKhoan } from '../../_models/taikhoan'
 declare var M: any;
 @Component({
   selector: 'app-dangkytaixe',
@@ -36,8 +35,7 @@ export class RegisterTXComponent implements OnInit {
     if (form) {
       form.reset();
     }
-    this.dangkyService.selectedDangKy = {
-      _id: '',
+    this.dangkyService.selectedTaiKhoan = {
       TenDangNhap: '',
       MatKhau: '',
       TenHienThi: '',
@@ -48,9 +46,10 @@ export class RegisterTXComponent implements OnInit {
       Avatar: '',
       HinhXe: '',
       BienSoXe: '',
-      BiXoa: null,
-      MaLoaiTaiKhoan: null,
-    }
+      BiXoa: false,
+      MaLoaiTaiKhoan: 2,
+      token: null
+    };
   }
 
   onSubmit(form: NgForm) {
@@ -60,13 +59,6 @@ export class RegisterTXComponent implements OnInit {
         // this.refreshRegisterList();
         M.toast({ html: 'Đăng ký thành công', classes: 'rounded' });
       });
-    } else {
-      this.dangkyService.putRegister(form.value).subscribe((res) => {
-        this.resetForm(form);
-        // this.refreshRegisterList();
-        M.toast({ html: 'Cập nhật thành công', classes: 'rounded' });
-      });
     }
   }
-
 }

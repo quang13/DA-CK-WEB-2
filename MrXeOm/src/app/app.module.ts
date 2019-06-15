@@ -21,6 +21,7 @@ import { MatFileUploadModule } from 'angular-material-fileupload';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialFileUploadComponent } from './material-file-upload/material-file-upload.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+// import { FormDatXeComponent } from './_components/form-dat-xe/form-dat-xe.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     LoginComponent,
     RegisterTXComponent,
     TaiXeCompopent,
-    MaterialFileUploadComponent
+    MaterialFileUploadComponent,
+    //FormDatXeComponent
   ],
   imports: [
     BrowserModule,

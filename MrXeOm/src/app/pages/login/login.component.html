@@ -1,18 +1,31 @@
 <div class="body">
     <div class="container" style="width: 700px;">
-        <form class="form-signin card" [formGroup]="loginForm" style="padding:40px 20px;">
+        <form class="form-signin card" [formGroup]="loginForm" (ngSubmit)="onSubmit()"  method="POST" autocomplete="off" style="padding:40px 20px;">
             <h2 style="text-align:center;">Đăng nhập</h2>
             <div style="padding-top: 30px; margin-bottom: 20px">
-                <input name="TenDangNhap" formControlName="TenDangNhap" [(ngModel)]="user.TenDangNhap" type="text" class="form-control" placeholder="Tên đăng nhập" required autofocus>
-                <input name="MatKhau" formControlName="MatKhau" [(ngModel)]="user.MatKhau" type="password" class="form-control" placeholder="Mật khẩu" required>
+                <mat-form-field class="example-full-width">
+                    <input formControlName="TenDangNhap" matInput placeholder="Tên đăng nhập*">
+                    <mat-error *ngIf="loginForm.controls['TenDangNhap'].errors?.required">{{vali.ms_required}}
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.controls['TenDangNhap'].errors?.pattern">{{vali.ms_pattern}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <input type="password" formControlName="MatKhau" matInput placeholder="Mật khẩu*">
+                    <mat-error *ngIf="loginForm.controls['MatKhau'].errors?.required">{{vali.ms_required}}
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.controls['MatKhau'].errors?.pattern">{{vali.ms_pattern}}
+                    </mat-error>
+                </mat-form-field>
             </div>
             <div>
-                <input type="checkbox" [(ngModel)]="theCheckbox" data-md-icheck (change)="toggleVisibility($event)" />
-                <p style="margin-left: 20px; line-height: 10px">Lưu thông tin</p>
+                <!-- <input type="checkbox" [(ngModel)]="theCheckbox" data-md-icheck (change)="toggleVisibility($event)" />
+                <p style="margin-left: 20px; line-height: 10px">Lưu thông tin</p> -->
+                <mat-checkbox formControlName="remember">Ghi nhớ tài khoản</mat-checkbox>
             </div>
             <div class="form-group" style="margin: 20px auto">
-                <button class="btn btn-info" (click)="validateLogin();" type="button">Đăng nhập</button>
-                <a href="" style="line-height:40px; padding-left:10px;">Trang chủ</a>
+                <button class="btn btn-info" type="button">Đăng nhập</button>
+                <a href="/" style="line-height:40px; padding-left:10px;">Trang chủ</a>
             </div>
         </form>
     </div>

@@ -23,3 +23,7 @@ div.body div.container form {
     width: 350px;
     height: 400px;
 }
+mat-error{
+    color: #F4516C;
+    font-size: 13px;
+}

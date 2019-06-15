@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 var taikhoanSchema = new mongoose.Schema({
-    _id: String, //ObjectID trong mongodb ứng với khoá chính
+    //MaTaiKhoan: {type: Number, required: true, unique: true, },
     TenDangNhap: {type: String, minlength: 4, maxlength: 32, required: true, unique: true},
     MatKhau: {type: String, minlength: 8, maxlength: 64, required: true},
     TenHienThi: {type: String, maxlength: 128},
@@ -15,38 +15,37 @@ var taikhoanSchema = new mongoose.Schema({
     Avatar: String,
     CMND: {type: String, minlength: 9, maxlength: 10},
     BienSoXe: String
-
 });
-taikhoanSchema.virtual('mk').set(function(MatKhau){
-    this.MatKhau = MatKhau;
-});
-taikhoanSchema.pre('save', function(next){
-    var tk = this;
+// taikhoanSchema.virtual('mk').set(function(MatKhau){
+//     this.MatKhau = MatKhau;
+// });
+// taikhoanSchema.pre('save', function(next){
+//     var tk = this;
 
-    //Chỉ băm mật khẩu khi nó được được sửa hay tạo mới
-    if(!tk.isModified('MatKhau')) return next();
+//     //Chỉ băm mật khẩu khi nó được được sửa hay tạo mới
+//     if(!tk.isModified('MatKhau')) return next();
 
-    // generate a salt
-    bcrypt.genSalt(10, (err, salt)=>{
-        if(err) return next(err);
+//     // generate a salt
+//     bcrypt.genSalt(10, (err, salt)=>{
+//         if(err) return next(err);
 
-        // băm mật khẩu với salt mới là 10 đã được khai báo ở trên!
-        bcrypt.hash(tk.MatKhau, salt, function(err, hash){
-            if(err) return next(err);
+//         // băm mật khẩu với salt mới là 10 đã được khai báo ở trên!
+//         bcrypt.hash(tk.MatKhau, salt, function(err, hash){
+//             if(err) return next(err);
 
-            // ghi đè mật khẩu được băm lên mật khẩu cũ
-            tk.MatKhau = hash;
-            next();
-        });
-    });
-});
+//             // ghi đè mật khẩu được băm lên mật khẩu cũ
+//             tk.MatKhau = hash;
+//             next();
+//         });
+//     });
+// });
 
 //so sánh mật khẩu
-taikhoanSchema.methods.compareMatKhau = function(candidateMatKhau, cb){
-    bcrypt.compare(candidateMatKhau, this.MatKhau, function(err, isMatch){
-        if(err) return cb(err);
-        cb(null, isMatch);
-    });
-};
+// taikhoanSchema.methods.compareMatKhau = function(candidateMatKhau, cb){
+//     bcrypt.compare(candidateMatKhau, this.MatKhau, function(err, isMatch){
+//         if(err) return cb(err);
+//         cb(null, isMatch);
+//     });
+// };
 
 module.exports = mongoose.model('taikhoan', taikhoanSchema);

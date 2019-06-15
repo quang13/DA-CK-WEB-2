@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, NgZone, Inject } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, NgZone, Inject, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { MapsAPILoader, MouseEvent, GoogleMapsAPIWrapper } from '@agm/core';
@@ -6,6 +6,9 @@ import { DirectionsMapDirective } from '../../map/google-map.directive';
 import { FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ok } from 'assert';
+import { TaiKhoan } from '../../_models/taikhoan';
+import {TaiKhoanService} from '../../_services/taikhoan.service';
+import { AuthenticationService } from '../../_services/authentication.service';
 
 // import {LatLng as LatitudeLongitude} from "@molteni/coordinate-utils/dist/LatLng";
 
@@ -30,6 +33,10 @@ export class HomeComponent implements OnInit{
     public address: string;
     public geoCoder;
     public money: any;
+    //get current user
+    currentUser: TaiKhoan;
+    currentUserSubscription: Subscription;
+    users: TaiKhoan[] = [];
 
     @ViewChild('search', { read: ElementRef, static: false})
     public searchElementRef: ElementRef;
@@ -51,7 +58,13 @@ export class HomeComponent implements OnInit{
     public origin: any; // its a example aleatory position
     public destination: any; // its a example aleatory position
 
-    constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
+    constructor(private mapsAPILoader: MapsAPILoader,
+        private ngZone: NgZone,
+        private authenticationService: AuthenticationService,
+        private userService: TaiKhoanService) {
+            this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+            this.currentUser = user;
+            });
     }
 
     ngOnInit() {
@@ -190,4 +203,10 @@ export class HomeComponent implements OnInit{
     //     this.money = 2000 * quangduong / 1000;
     //     return this.money;
     // }
+    ngOnDestroy() {
+        // unsubscribe to ensure no memory leaks
+        this.currentUserSubscription.unsubscribe();
+    }
+    
+
 }

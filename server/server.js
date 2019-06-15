@@ -3,20 +3,22 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-//const jwt = require('jsonwebtoken');
+const io = require('socket.io');
 const app = express();
 const port = process.env.PORT || 8080;
-//const configToken = require('./routes/api/configToken');
 //API routes
 const api = require('./routes/api/main');
 const FileStore = require('session-file-store')(session);
-//set secret
-// app.set('Secret', configToken.secret);
 let options;
 app.use(cookieParser()); // đọc cookie (cần cho xác thực)
 app.use(session({
+    genid: (req) =>{
+        console.log(req.sessionID);
+    },
     store: new FileStore(options),
-    secret: 'DatXeOm'
+    secret: 'DatXeOm',
+    resave: false,
+    saveUninitialized: true
 })); // chuỗi bí mật đã bị mã hoá
 app.use(bodyParser.json()); // lấy thông tin từ html forms chuyển về json
 app.use(bodyParser.urlencoded({extended: false}));
