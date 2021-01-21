@@ -43,7 +43,7 @@
     "popper": "^1.0.1",
     "rxjs": "^6.4.0",
     "rxjs-compat": "^6.5.2",
-    "socket.io": "^2.2.0",
+    "socket.io": "^2.4.0",
     "toastr": "^2.1.4",
     "tslib": "^1.9.0",
     "uniq": "^1.0.1",
